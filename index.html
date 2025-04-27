@@ -17,7 +17,8 @@
       color: #333;
       margin: 0;
       padding: 20px;
-      padding-top: 120px; /* щоб не закривало фіксований хедер */
+      padding-top: 120px;
+      /* щоб не закривало фіксований хедер */
     }
 
     .header {
@@ -297,8 +298,13 @@
           toggleBookmark(meme.number);
         });
 
-        item.addEventListener('click', () => {
-          item.classList.toggle('expanded');
+        item.addEventListener('click', (e) => {
+          // якщо клік був по кнопці закладки або телеграм кнопці — ігноруємо
+          if (e.target.closest('.bookmark-button') || e.target.closest('.meme-link.telegram')) {
+            return;
+          }
+          const desc = item.querySelector('.meme-description');
+          desc.style.display = (desc.style.display === 'block') ? 'none' : 'block';
         });
 
         list.appendChild(item);
