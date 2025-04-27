@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мєм Рація — Мем</title>
-  <link rel="stylesheet" href="./components/MemeList.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мєм Рація — Мем</title>
+    <link rel="stylesheet" href="./components/MemeList.css">
+    <link rel="stylesheet" href="./components/meme.css">
+    <link rel="stylesheet" href="./components/Header.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
+
 <body>
-    <div id="memeContainer"></div>
-  
-    <div id="backButtonContainer">
-      <button id="backButton">⬅️ Назад на головну</button>
+    <div class="header">
+        <div class="logo">
+            <img src="image/favicon.ico" alt="Logo">
+        </div>
+        <h1 class="title">Мєм Рація</h1>
     </div>
-  
+
+    <div id="mainContent">
+
+        <div id="memeContainer"></div>
+
+        <div id="backButtonContainer">
+            <button id="backButton" class="material-button">
+                <span class="material-icons">arrow_back</span> До рації
+            </button>
+        </div>
+
+    </div>
+
     <script src="./memdata.js"></script>
     <script type="module" src="./components/meme.js"></script>
-  </body>
-  
+</body>
+
 </html>
