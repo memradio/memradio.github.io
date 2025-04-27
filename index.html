@@ -1,94 +1,121 @@
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Мєм Рація</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .search {
-      max-width: 400px;
-      margin: 0 auto 30px;
-      display: flex;
-    }
-    .search input {
-      flex: 1;
-      padding: 10px 15px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    .meme-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .meme-item {
-      background: white;
-      border-radius: 8px;
-      padding: 15px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .meme-item:hover {
-      background: #eef4ff;
-    }
-    .meme-header {
-      display: flex;
-      align-items: center;
-    }
-    .meme-number {
-      font-weight: bold;
-      color: #007bff;
-      width: 50px;
-      flex-shrink: 0;
-    }
-    .meme-name {
-      font-size: 16px;
-    }
-    .meme-description {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 10px;
-      display: none;
-    }
-    .meme-link {
-      margin-top: 10px;
-      display: inline-block;
-      background-color: #ff5252;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .meme-link.tiktok {
-      background-color: #69c9d0; /* Колір фону для TikTok */
-    }
-    .meme-item.expanded .meme-description {
-      display: block;
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.8em;
-      color: #aaa;
-    }
-  </style>
-</head>
+  <head>
+    <!-- Add FontAwesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мєм Рація</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .search {
+        max-width: 400px;
+        margin: 0 auto 30px;
+        display: flex;
+      }
+      .search input {
+        flex: 1;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      .meme-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .meme-item {
+        background: white;
+        border-radius: 8px;
+        padding: 15px 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        cursor: pointer;
+        transition: background 0.2s;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding-bottom: 60px; /* Space for the Telegram button */
+      }
+      .meme-item:hover {
+        background: #eef4ff;
+      }
+      .meme-header {
+        display: flex;
+        align-items: center;
+      }
+      .meme-number {
+        font-weight: bold;
+        color: #007bff;
+        width: 50px;
+        flex-shrink: 0;
+      }
+      .meme-name {
+        font-size: 16px;
+      }
+      .meme-description {
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 10px;
+        display: none;
+        flex-grow: 1;
+      }
+      .meme-link {
+        margin-top: 10px;
+        display: inline-block;
+        background-color: #ff5252;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .meme-link.tiktok {
+        background-color: #69c9d0;
+      }
+      .meme-link.telegram {
+        background-color: #0088cc; /* Telegram color */
+        color: white;
+        text-align: center;
+        padding: 10px 12px;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        transition: background 0.3s ease;
+      }
+      .meme-link.telegram:hover {
+        background-color: #007bb5;
+      }
+      .meme-item.expanded .meme-description {
+        display: block;
+      }
+      footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.8em;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  
+  
 <body>
 
 <h1>Мєм Рація</h1>
@@ -105,8 +132,7 @@
 
 <script src="memdata.js"></script>
 <script>
-
-const list = document.getElementById('memeList');
+  const list = document.getElementById('memeList');
 const searchInput = document.getElementById('searchInput');
 
 function renderMemes(filter = '') {
@@ -119,6 +145,8 @@ function renderMemes(filter = '') {
     .forEach(meme => {
       const item = document.createElement('div');
       item.className = 'meme-item';
+      // Determine the link to share on Telegram
+      const shareLink = meme.links?.youtube || meme.youtubelink || meme.links?.tiktok || `https://yourwebsite.com/meme/${encodeURIComponent(meme.number)}`;
       item.innerHTML = `
         <div class="meme-header">
           <div class="meme-number">${meme.number}</div>
@@ -130,6 +158,10 @@ function renderMemes(filter = '') {
           ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
           ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
         </div>
+        <!-- Telegram share button is always visible -->
+        <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(meme.name)}" target="_blank">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
       `;
       item.addEventListener('click', () => {
         item.classList.toggle('expanded');
