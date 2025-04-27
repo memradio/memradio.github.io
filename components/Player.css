@@ -1,0 +1,71 @@
+#globalPlayerContainer {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    z-index: 19;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
+  
+  #globalPlayer {
+    width: 100%;
+    max-width: 360px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 8px;
+  }
+  
+  audio::-webkit-media-controls-panel {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-current-time-display,
+  audio::-webkit-media-controls-time-remaining-display,
+  audio::-webkit-media-controls-timeline,
+  audio::-webkit-media-controls-volume-slider {
+    color: #2196f3;
+  }
+  
+  .player-controls {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .player-controls button {
+    background: #e3f2fd;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    color: #1976d2;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .player-controls button:hover {
+    background: #bbdefb;
+    transform: scale(1.1);
+  }
+  
+  #currentMemeName {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+  }
+  
