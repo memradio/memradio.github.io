@@ -1,0 +1,8 @@
+#mainContent {
+    margin-top: 260px; /* висота шапки (80px) + висота плеєра (~180px) */
+    padding: 20px;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }

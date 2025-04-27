@@ -1,0 +1,80 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    position: relative;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .tab-button {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  .tab-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 3px;
+    background: #2196f3;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  
+  /* При hover також легка підсвітка */
+  .tab-button:hover::after {
+    transform: scaleX(0.5);
+  }
+  
+  /* Коли вкладка активна — повна підкреслена лінія */
+  .tab-button.active {
+    color: #2196f3;
+  }
+  
+  .tab-button.active::after {
+    transform: scaleX(1);
+  }
+
+  .tab-button {
+    position: relative;
+    overflow: hidden; /* дуже важливо для ripple */
+    background: none;
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s;
+  }
+  
+  /* Ripple елемент */
+  .tab-button .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-animation 600ms linear;
+    background-color: rgba(33, 150, 243, 0.4); /* світло-синій ripple */
+  }
+  
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+  
+  

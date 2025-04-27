@@ -1,0 +1,94 @@
+.meme-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .meme-item {
+    background: white;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    padding-bottom: 60px;
+  }
+  
+  .meme-item:hover {
+    background: #eef4ff;
+  }
+  
+  .meme-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .meme-number {
+    font-weight: bold;
+    color: #007bff;
+    width: 50px;
+    flex-shrink: 0;
+  }
+  
+  .meme-name {
+    font-size: 16px;
+  }
+  
+  .meme-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .meme-link {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #ff5252;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .meme-link.tiktok {
+    background-color: #69c9d0;
+  }
+  
+  .meme-link.telegram {
+    background-color: #0088cc;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    transition: background 0.3s ease;
+  }
+  
+  .meme-link.telegram:hover {
+    background-color: #007bb5;
+  }
+  
+  .bookmark-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ccc;
+    margin-left: auto;
+    transition: color 0.3s;
+  }
+  
+  .bookmark-button.active {
+    color: #ff9800;
+  }
+  
