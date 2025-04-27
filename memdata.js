@@ -364,8 +364,7 @@
     "number": "112",
     "name": "Harry Styles - Late Night Talking",
     "links": {
-      "tiktok": "https://www.tiktok.com/@hshq/video/7119894046734208302",
-      "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
+      "tiktok": "https://www.tiktok.com/@hshq/video/7119894046734208302"
     }
   },
   {
