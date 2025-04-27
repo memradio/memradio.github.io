@@ -7,53 +7,84 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f2f2f2;
+      background: #f9f9f9;
       color: #333;
       margin: 0;
       padding: 20px;
     }
     h1 {
       text-align: center;
-      margin-bottom: 40px;
-      font-size: 2.5em;
-      color: #222;
+      margin-bottom: 20px;
+    }
+    .search {
+      max-width: 400px;
+      margin: 0 auto 30px;
+      display: flex;
+    }
+    .search input {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
     }
     .meme-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      max-width: 600px;
+      gap: 10px;
+      max-width: 700px;
       margin: 0 auto;
     }
     .meme-item {
-      background: #ffffff;
-      padding: 18px 22px;
-      border-radius: 12px;
+      background: white;
+      border-radius: 8px;
+      padding: 15px 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.2s ease;
+      cursor: pointer;
+      transition: background 0.2s;
     }
     .meme-item:hover {
-      background: #e6f0ff;
-      transform: scale(1.02);
-      cursor: pointer;
+      background: #eef4ff;
+    }
+    .meme-header {
+      display: flex;
+      align-items: center;
     }
     .meme-number {
-      font-size: 1.6em;
       font-weight: bold;
       color: #007bff;
+      width: 50px;
+      flex-shrink: 0;
     }
     .meme-name {
-      font-size: 1.2em;
-      flex: 1;
-      margin-left: 15px;
+      font-size: 16px;
+    }
+    .meme-description {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 10px;
+      display: none;
+    }
+    .meme-link {
+      margin-top: 10px;
+      display: inline-block;
+      background-color: #ff5252;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .meme-link.tiktok {
+      background-color: #69c9d0; /* Колір фону для TikTok */
+    }
+    .meme-item.expanded .meme-description {
+      display: block;
     }
     footer {
-      margin-top: 50px;
+      margin-top: 40px;
       text-align: center;
-      font-size: 0.9em;
+      font-size: 0.8em;
       color: #aaa;
     }
   </style>
@@ -62,168 +93,57 @@
 
 <h1>Мєм Рація</h1>
 
-<div class="meme-list" id="memeList">
-  <!-- Сюди автоматично вставляються мєми -->
+<div class="search">
+  <input type="text" id="searchInput" placeholder="Пошук мєма...">
 </div>
+
+<div class="meme-list" id="memeList"></div>
 
 <footer>
   Зроблено з любовʼю для мємів
 </footer>
 
+<script src="memdata.js"></script>
 <script>
-  // JSON-дані
-    const memeData = `
-[
-  { "number": "001", "name": "Маниш мене дурманиш" },
-  { "number": "002", "name": "отвали со свои вот етим самим" },
-  { "number": "003", "name": "шо воно казать еслі канешно" },
-  { "number": "004", "name": "Я в ахуе давай" },
-  { "number": "005", "name": "no well" },
-  { "number": "006", "name": "stop spending your money on stupid shit" },
-  { "number": "007", "name": "what do you mean" },
-  { "number": "008", "name": "Марина" },
-  { "number": "009", "name": "вечно надута" },
-  { "number": "010", "name": "Добрий вечір ведющій" },
-  { "number": "011", "name": "както все не побагатому" },
-  { "number": "012", "name": "нехуй заняться" },
-  { "number": "013", "name": "surprise surprise" },
-  { "number": "014", "name": "притармажуй" },
-  { "number": "015", "name": "нашо сохнути за тим довбойобом" },
-  { "number": "016", "name": "Мені нравицця дивиться як воно горить" },
-  { "number": "017", "name": "похуй похуй похуй" },
-  { "number": "018", "name": "собака рже" },
-  { "number": "019", "name": "спасибо дура" },
-  { "number": "020", "name": "фамилие имя отчество" },
-  { "number": "021", "name": "Шариш в этой теме" },
-  { "number": "022", "name": "я хочу беляяяяяяяш" },
-  { "number": "023", "name": "Шо то типа обед будет" },
-  { "number": "024", "name": "є стіл є кресло" },
-  { "number": "025", "name": "пойми дура в мене живіт болить" },
-  { "number": "026", "name": "Діма ти не дома" },
-  { "number": "027", "name": "Зубожиня" },
-  { "number": "028", "name": "там така компанія зіпєшся і піздець тобі" },
-  { "number": "029", "name": "Думает, что любит тебя!! оригинал" },
-  { "number": "030", "name": "ну вас всех в пизду" },
-  { "number": "031", "name": "ну й ш ну й шо" },
-  { "number": "032", "name": "девять десять" },
-  { "number": "033", "name": "блядь аткуда ана взялась" },
-  { "number": "034", "name": "Блядь блядь сука блядть коротка версія" },
-  { "number": "035", "name": "блядь ти шо сука дибіл" },
-  { "number": "036", "name": "ой блять та ну" },
-  { "number": "037", "name": "та блять йомайо" },
-  { "number": "038", "name": "ти шо охуел ска" },
-  { "number": "039", "name": "чиназес" },
-  { "number": "040", "name": "ухти ж йоханий бабай" },
-  { "number": "041", "name": "Хахалі Каті" },
-  { "number": "042", "name": "так і не скажеш шо шльондра" },
-  { "number": "043", "name": "так мене 12 числа вже в києві не буде" },
-  { "number": "044", "name": "сметана безхуйозна" },
-  { "number": "045", "name": "сто доларов на шоби комфортно жить" },
-  { "number": "046", "name": "я вас всіх понагодовую дрючком по спину" },
-  { "number": "047", "name": "пиздуй із деревні" },
-  { "number": "048", "name": "Світлана добрий ранок, йди нахуй" },
-  { "number": "049", "name": "не умієш не берися, не кончаеш не ібися" },
-  { "number": "050", "name": "мені просто хочеться понять шо таке презент сімпл" },
-  { "number": "051", "name": "тепер таке время всьо курва дороге" },
-  { "number": "052", "name": "не пожила дерево не посадила" },
-  { "number": "053", "name": "как здесь класна вабще не хачу уезжать" },
-  { "number": "054", "name": "забераем свои курва монатки" },
-  { "number": "055", "name": "СМОТРЯ СКОЛЬКО DETAILS В ЭТОМ ПИДЖАКЕ" },
-  { "number": "056", "name": "слово не олівець" },
-  { "number": "057", "name": "жопа в тепле чем тепло в жопе" },
-  { "number": "058", "name": "помий мило зарубай сокиру" },
-  { "number": "059", "name": "курва нахуя я це зробив" },
-  { "number": "060", "name": "Олег ти шо плачеш" },
-  { "number": "061", "name": "Алег ти шо це плачеш" },
-  { "number": "062", "name": "я уже заебался блядт идти ска нах" },
-  { "number": "063", "name": "шаройобитись" },
-  { "number": "064", "name": "забили забули" },
-  { "number": "065", "name": "за 40 грн штани" },
-  { "number": "066", "name": "если у вас нет денег то на трасу" },
-  { "number": "067", "name": "oui oui oui" },
-  { "number": "068", "name": "не так глубоко" },
-  { "number": "069", "name": "кожну ночь перед сном я іграю с пісюнок" },
-  { "number": "070", "name": "its britney bitch short version" },
-  { "number": "071", "name": "летіла лопата" },
-  { "number": "072", "name": "i know u you know that i know u" },
-  { "number": "073", "name": "купляєм горіхи піря" },
-  { "number": "074", "name": "как у кошечки дела" },
-  { "number": "075", "name": "why are you gay full version danse" },
-  { "number": "076", "name": "Бабка ну и хуй с ним" },
-  { "number": "077", "name": "успела похудеть к лету" },
-  { "number": "078", "name": "то яма була страшна в моєму житті" },
-  { "number": "079", "name": "йди цицьку дам" },
-  { "number": "080", "name": "АЛКАШ ПОДХОДИШЬ" },
-  { "number": "081", "name": "Славка не бери молоду" },
-  { "number": "082", "name": "ББСБ повна версія" },
-  { "number": "083", "name": "hit it get it" },
-  { "number": "084", "name": "ретузіки" },
-  { "number": "085", "name": "Курган Вчителька" },
-  { "number": "086", "name": "Курган Пострижись як в прошлый раз" },
-  { "number": "087", "name": "Курган ЖОПА" },
-  { "number": "088", "name": "Курган Кровавий кулак" },
-  { "number": "089", "name": "Wellboy - Гуси" },
-  { "number": "090", "name": "Klavdia Petrivna Я щаслива" },
-  { "number": "091", "name": "VERKA SERDUCHKA - DANCING" },
-  { "number": "092", "name": "Miley Cyrus - Flowers" },
-  { "number": "093", "name": "Katy Perry - Harleys In Hawaii" },
-  { "number": "094", "name": "Лолита Шпилька-каблучок" },
-  { "number": "095", "name": "In Da Getto" },
-  { "number": "096", "name": "In Da Club" },
-  { "number": "097", "name": "The Pussycat Dolls - Don't Cha" },
-  { "number": "098", "name": "Ricky Martin - La Mordidita" },
-  { "number": "099", "name": "Якубені" },
-  { "number": "100", "name": "ILLIA HB" },
-  { "number": "101", "name": "Britney_GIVE_ME_MORE" },
-  { "number": "102", "name": "GALA - Freed from desire" },
-  { "number": "103", "name": "Грибы - Велик" },
-  { "number": "104", "name": "Britney_One_Two_Three" },
-  { "number": "105", "name": "Britney_Did_It_Again" },
-  { "number": "106", "name": "Britney Toxic" },
-  { "number": "107", "name": "Britney H" },
-  { "number": "108", "name": "Watermelon Sugar" },
-  { "number": "109", "name": "summer inside" },
-  { "number": "110", "name": "Doja Cat - Paint The Town Red" },
-  { "number": "111", "name": "Pedro" },
-  { "number": "112", "name": "Harry Styles - Late Night Talking" },
-  { "number": "113", "name": "Dua_Lipa_-_Hallucinate" },
-  { "number": "114", "name": "Dua Lipa - Break My Heart" },
-  { "number": "115", "name": "Dua Lipa - Pretty Please" },
-  { "number": "116", "name": "Dua Lipa - Training Season" },
-  { "number": "117", "name": "Dua Lipa - Houdini" },
-  { "number": "118", "name": "Sophie Ellis-Bextor - Murder On The Dancefloor" },
-  { "number": "119", "name": "Madonna- Back That Up To The Beat" },
-  { "number": "120", "name": "Enrique Iglesias - DUELE EL CORAZON" },
-  { "number": "121", "name": "Telephone - Lady Gaga" },
-  { "number": "122", "name": "Call Me By Your Name" },
-  { "number": "123", "name": "Bon Appetit - Katy Perry" },
-  { "number": "124", "name": "Imagine Dragons - Sharks" },
-  { "number": "125", "name": "Imagine Dragons - Natural" }
-]
-`;
 
-  // Перетворюємо JSON у масив об'єктів
-  try {
-    const memes = JSON.parse(memeData);
+const list = document.getElementById('memeList');
+const searchInput = document.getElementById('searchInput');
 
-    // Перевіряємо, чи правильні дані
-    console.log(memes);
-
-    const list = document.getElementById('memeList');
-
-    // Додаємо кожен мем в список
-    memes.forEach(meme => {
+function renderMemes(filter = '') {
+  list.innerHTML = '';
+  memeData
+    .filter(meme =>
+      meme.name.toLowerCase().includes(filter.toLowerCase()) ||
+      meme.description?.toLowerCase().includes(filter.toLowerCase())
+    )
+    .forEach(meme => {
       const item = document.createElement('div');
       item.className = 'meme-item';
       item.innerHTML = `
-        <div class="meme-number">${meme.number}</div>
-        <div class="meme-name">${meme.name}</div>
+        <div class="meme-header">
+          <div class="meme-number">${meme.number}</div>
+          <div class="meme-name">${meme.name}</div>
+        </div>
+        <div class="meme-description">
+          ${meme.description || ''}
+          ${meme.youtubelink ? `<br><a class="meme-link" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
+          ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
+          ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
+        </div>
       `;
+      item.addEventListener('click', () => {
+        item.classList.toggle('expanded');
+      });
       list.appendChild(item);
     });
-  } catch (error) {
-    console.error("Помилка при обробці JSON:", error);
-  }
+}
+
+searchInput.addEventListener('input', (e) => {
+  renderMemes(e.target.value);
+});
+
+renderMemes();
+
 </script>
 
 </body>
