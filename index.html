@@ -291,6 +291,7 @@
             ${meme.youtubelink ? `<br><a class="meme-link" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
             ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
             ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
+            ${meme.audio ? `<br><audio controls style="margin-top:10px; width: 100%;" src="audio/${meme.audio}"></audio>` : ''}
           </div>
           <button class="bookmark-button ${isBookmarked(meme.number) ? 'active' : ''}" title="Додати в закладки">&#9733;</button>
           <a class="meme-link telegram" href="${finalLink}" target="_blank">
