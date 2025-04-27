@@ -299,7 +299,7 @@
   { "number": "070", "name": "its britney bitch short version" },
   { "number": "071", "name": "летіла лопата" },
   { "number": "072", "name": "i know u you know that i know u" },
-  { "number": "073", "name": "купляєм горіхи піря" },
+  { "number": "073", "name": "купляєм горіхи піря", "links": {"tiktok": "https://www.tiktok.com/@valyatkachuk2/video/7448222944590941458"} },
   { "number": "074", "name": "как у кошечки дела" },
   { "number": "075", "name": "why are you gay full version danse" },
   { "number": "076", "name": "Бабка ну и хуй с ним" },
