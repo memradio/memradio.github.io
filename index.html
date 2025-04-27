@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Мєм Рація</title>
-
-  <!-- Add FontAwesome CDN for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
 
   <style>
@@ -17,41 +15,109 @@
       color: #333;
       margin: 0;
       padding: 20px;
-      padding-top: 120px;
-      /* щоб не закривало фіксований хедер */
+      padding-top: 260px; /* header + player */
     }
 
     .header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      height: 80px;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+.logo {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
 
-    .logo img {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-    }
+.logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
 
-    .title {
-      flex-grow: 1;
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      margin: 0;
-    }
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+
+#globalPlayerContainer {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 19;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+#globalPlayer {
+  width: 100%;
+  max-width: 360px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 8px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-volume-slider {
+  color: #2196f3;
+}
+
+.player-controls {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.player-controls button {
+  background: #e3f2fd;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  color: #1976d2;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.player-controls button:hover {
+  background: #bbdefb;
+  transform: scale(1.1);
+}
+
 
     .tabs {
       display: flex;
@@ -179,14 +245,12 @@
     }
 
     .bookmark-button {
-      position: absolute;
-      top: 15px;
-      right: 60px;
       background: none;
       border: none;
       cursor: pointer;
       font-size: 20px;
       color: #ccc;
+      margin-left: auto;
       transition: color 0.3s;
     }
 
@@ -194,52 +258,68 @@
       color: #ff9800;
     }
 
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.8em;
-      color: #aaa;
+    #currentMemeName {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
-
 <body>
-
   <div class="header">
     <div class="logo">
       <img src="image/favicon.ico" alt="Logo">
     </div>
     <h1 class="title">Мєм Рація</h1>
   </div>
-
+  
+  <div id="globalPlayerContainer">
+    <audio id="globalPlayer" controls></audio>
+    <div class="player-controls">
+      <button id="prevButton"><span class="material-icons">skip_previous</span></button>
+      <button id="playPauseButton"><span class="material-icons" id="playPauseIcon">play_arrow</span></button>
+      <button id="nextButton"><span class="material-icons">skip_next</span></button>
+    </div>
+    <div id="currentMemeName"></div>
+  </div>
+  
   <div class="tabs">
     <button id="showAll" class="tab-button active">Усі меми</button>
     <button id="showBookmarks" class="tab-button">Збережені меми</button>
   </div>
-
+  
   <div class="search">
     <input type="text" id="searchInput" placeholder="Пошук мєма...">
   </div>
-
+  
   <div class="meme-list" id="memeList"></div>
-
-  <footer>
-    Зроблено з любовʼю для мємів
-  </footer>
-
-  <script src="memdata.js"></script>
+  
+  <!-- Підключаєш свої дані з мемами -->
+  <script src="memdata.js"></script> 
+  
   <script>
     const list = document.getElementById('memeList');
     const searchInput = document.getElementById('searchInput');
     const showAllButton = document.getElementById('showAll');
     const showBookmarksButton = document.getElementById('showBookmarks');
-
+    const globalPlayer = document.getElementById('globalPlayer');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const currentMemeName = document.getElementById('currentMemeName');
+    
     let currentTab = 'all';
-
+    let playlist = [];
+    let currentIndex = -1;
+    
     function getBookmarks() {
       return JSON.parse(localStorage.getItem('bookmarkedMemes') || '[]');
     }
-
+    
+    function isBookmarked(memeNumber) {
+      return getBookmarks().includes(memeNumber);
+    }
+    
     function toggleBookmark(memeNumber) {
       let bookmarks = getBookmarks();
       if (bookmarks.includes(memeNumber)) {
@@ -248,100 +328,142 @@
         bookmarks.push(memeNumber);
       }
       localStorage.setItem('bookmarkedMemes', JSON.stringify(bookmarks));
-      renderMemes(searchInput.value);
     }
-
-    function isBookmarked(memeNumber) {
-      return getBookmarks().includes(memeNumber);
+    
+    function playMeme(index) {
+      if (index >= 0 && index < playlist.length) {
+        currentIndex = index;
+        globalPlayer.src = playlist[currentIndex].audioUrl;
+        currentMemeName.textContent = playlist[currentIndex].name;
+        globalPlayer.load();
+        globalPlayer.play();
+      }
     }
-
+    
+    function updatePlaylist(memes) {
+      playlist = memes.filter(meme => meme.audio).map(meme => ({
+        name: meme.name,
+        audioUrl: 'audio/' + meme.audio
+      }));
+    }
+    
     function renderMemes(filter = '') {
       list.innerHTML = '';
-
+    
       let filteredMemes = memeData
         .filter(meme =>
           meme.name.toLowerCase().includes(filter.toLowerCase()) ||
           meme.description?.toLowerCase().includes(filter.toLowerCase())
         );
-
+    
       if (currentTab === 'bookmarks') {
         const bookmarks = getBookmarks();
         filteredMemes = filteredMemes.filter(meme => bookmarks.includes(meme.number));
       }
-
-      filteredMemes.forEach(meme => {
+    
+      updatePlaylist(filteredMemes);
+    
+      filteredMemes.forEach((meme, index) => {
         const item = document.createElement('div');
         item.className = 'meme-item';
-
-        const shareLink = meme.links?.youtube || meme.youtubelink || meme.links?.tiktok;
-
-        let finalLink = "";
-        if (shareLink) {
-          finalLink = `https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(meme.name)}`;
-        } else {
-          finalLink = `missing.html?meme=${encodeURIComponent(meme.name)}`;
-        }
+        const shareLink = meme.links?.youtube || meme.youtubelink || meme.links?.tiktok || `https://yourwebsite.com/meme/${encodeURIComponent(meme.number)}`;
+    
         item.innerHTML = `
           <div class="meme-header">
             <div class="meme-number">${meme.number}</div>
             <div class="meme-name">${meme.name}</div>
+            <button class="bookmark-button ${isBookmarked(meme.number) ? 'active' : ''}" title="Додати в збережене">&#9733;</button>
           </div>
           <div class="meme-description">
             ${meme.description || ''}
             ${meme.youtubelink ? `<br><a class="meme-link" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
             ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
             ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
-            ${meme.audio ? `<br><audio controls style="margin-top:10px; width: 100%;" src="audio/${meme.audio}"></audio>` : ''}
           </div>
-          <button class="bookmark-button ${isBookmarked(meme.number) ? 'active' : ''}" title="Додати в закладки">&#9733;</button>
-          <a class="meme-link telegram" href="${finalLink}" target="_blank">
+          <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(meme.name)}" target="_blank">
             <i class="fab fa-telegram-plane"></i>
           </a>
         `;
-
+    
         const bookmarkBtn = item.querySelector('.bookmark-button');
         bookmarkBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           toggleBookmark(meme.number);
+          renderMemes(searchInput.value);
         });
-
+    
+        const desc = item.querySelector('.meme-description');
         item.addEventListener('click', (e) => {
-          // якщо клік був по кнопці закладки або телеграм кнопці — ігноруємо
-          if (e.target.closest('.bookmark-button') || e.target.closest('.meme-link.telegram')) {
-            return;
-          }
-          const desc = item.querySelector('.meme-description');
+          if (e.target.closest('.telegram') || e.target.closest('.bookmark-button')) return;
           desc.style.display = (desc.style.display === 'block') ? 'none' : 'block';
+          playMeme(index);
         });
-
+    
         list.appendChild(item);
       });
     }
-
+    
     function setActiveTab(tabId) {
       document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
     }
-
+    
     showAllButton.addEventListener('click', () => {
       currentTab = 'all';
-      renderMemes(searchInput.value);
       setActiveTab('showAll');
+      renderMemes(searchInput.value);
     });
-
+    
     showBookmarksButton.addEventListener('click', () => {
       currentTab = 'bookmarks';
-      renderMemes(searchInput.value);
       setActiveTab('showBookmarks');
+      renderMemes(searchInput.value);
     });
-
+    
     searchInput.addEventListener('input', (e) => {
       renderMemes(e.target.value);
     });
+    
+    playPauseButton.addEventListener('click', () => {
+      if (globalPlayer.paused) {
+        globalPlayer.play();
+      } else {
+        globalPlayer.pause();
+      }
+    });
+    
+    prevButton.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        playMeme(currentIndex - 1);
+      }
+    });
+    
+    nextButton.addEventListener('click', () => {
+      if (currentIndex < playlist.length - 1) {
+        playMeme(currentIndex + 1);
+      }
+    });
+    
 
+globalPlayer.addEventListener('play', () => {
+  document.getElementById('playPauseIcon').innerText = 'pause';
+});
+
+globalPlayer.addEventListener('pause', () => {
+  document.getElementById('playPauseIcon').innerText = 'play_arrow';
+});
+    
+    globalPlayer.addEventListener('ended', () => {
+      if (currentIndex < playlist.length - 1) {
+        setTimeout(() => {
+          playMeme(currentIndex + 1);
+        }, 3000); // 3 секунди паузи перед наступним треком
+      }
+    });
+    
     renderMemes();
-  </script>
-
-</body>
-
-</html>
+    </script>
+    
+    </body>
+    </html>
+    
