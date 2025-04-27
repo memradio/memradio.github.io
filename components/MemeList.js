@@ -8,7 +8,7 @@ export function renderMemeList(container, memes) {
   memes.forEach((meme, index) => {
     const item = document.createElement('div');
     item.className = 'meme-item';
-    const shareLink = meme.links?.youtube || meme.youtubelink || meme.links?.tiktok || `https://yourwebsite.com/meme/${encodeURIComponent(meme.number)}`;
+    const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}`;
 
     item.innerHTML = `
       <div class="meme-header">
@@ -23,7 +23,7 @@ export function renderMemeList(container, memes) {
         ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
       </div>
       <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(meme.name)}" target="_blank">
-        <i class="fab fa-telegram-plane"></i>
+       <i class="fab fa-telegram-plane"></i>
       </a>
     `;
 
