@@ -216,9 +216,7 @@
       "number": "043",
       "name": "так мене 12 числа вже в києві не буде",
       "links": {
-        "tiktok": "https://www.tiktok.com/@nadiastupak/video/7251211720746749190",
-        "youtube": "https://www.youtube.com/watch?v=2843nS87Kis&utm_source=chatgpt.com"
-      }
+        "tiktok": "https://www.tiktok.com/@nadiastupak/video/7251211720746749190"      }
     },
     {
       "number": "044",
