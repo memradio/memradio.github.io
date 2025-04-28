@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const audio = document.createElement('audio');
       audio.src = 'audio/' + meme.audio;
       audio.controls = true;
+      audio.controlsList = 'nodownload';
       audio.autoplay = true;
       audio.style.display = 'block';
       audio.style.margin = '30px auto 0 auto';

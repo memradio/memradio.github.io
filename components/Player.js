@@ -8,7 +8,7 @@ export function renderPlayer(container) {
   playerContainer.id = 'globalPlayerContainer';
 
   playerContainer.innerHTML = `
-    <audio id="globalPlayer" controls></audio>
+    <audio id="globalPlayer" controls controlsList="nodownload"></audio>
     <div class="player-controls">
       <button id="prevButton"><span class="material-icons">skip_previous</span></button>
       <button id="playPauseButton"><span class="material-icons" id="playPauseIcon">play_arrow</span></button>

@@ -95,6 +95,20 @@
   .meme-item.active {
     background-color: #e3f2fd;
     box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+    animation: activeMemeFlash 0.6s ease;
     transition: background 0.3s, box-shadow 0.3s;
   }
+
+  @keyframes activeMemeFlash {
+  0% {
+    background-color: #bbdefb; /* трошки темніше */
+  }
+  50% {
+    background-color: #e3f2fd; /* світліше */
+  }
+  100% {
+    background-color: #e3f2fd; /* залишається світлим */
+  }
+}
+
   
