@@ -617,53 +617,62 @@ let memeData = [
     "number": "101",
     "name": "Britney_GIVE_ME_MORE",
     "description": "Пісня 'Gimme More' Брітні Спірс, мемна фраза 'It's Britney, bitch'.",
-    "youtubelink": "https://www.youtube.com/watch?v=elueA2rofoo"
+    "youtubelink": "https://www.youtube.com/watch?v=elueA2rofoo",
+    "audio": "101 Britney_GIVE_ME_MORE.mp3",
   },
   {
     "number": "102",
     "name": "GALA - Freed from desire",
     "description": "Хіт 90-х, часто використовується у футбольних фанатських мемах.",
-    "youtubelink": "https://www.youtube.com/watch?v=WvVfcyH9gKs"
+    "youtubelink": "https://www.youtube.com/watch?v=WvVfcyH9gKs",
+    "audio": "102 GALA - Freed from desire.mp3"
   },
   {
     "number": "103",
     "name": "Грибы - Велик",
     "description": "Популярна пісня українського гурту 'Грибы' про велосипед.",
-    "youtubelink": "https://www.youtube.com/watch?v=zwXJCK0wrB0"
+    "youtubelink": "https://www.youtube.com/watch?v=zwXJCK0wrB0",
+    "audio": "103 Грибы - Велик .mp3"
   },
   {
     "number": "104",
     "name": "Britney_One_Two_Three",
     "description": "Пісня '3' Брітні Спірс, де співається 'one, two, three'.",
-    "youtubelink": "https://www.youtube.com/watch?v=M_3fn9r0aTU"
+    "youtubelink": "https://www.youtube.com/watch?v=M_3fn9r0aTU",
+    "audio": "104 Britney_One_Two_Three.mp3"
   },
   {
     "number": "105",
     "name": "Britney_Did_It_Again",
     "description": "Пісня 'Oops!... I Did It Again', мем про повторення помилок.",
-    "youtubelink": "https://www.youtube.com/watch?v=CduA0TULnow"
+    "youtubelink": "https://www.youtube.com/watch?v=CduA0TULnow",
+    "audio": "105 Britney_Did_It_Again.mp3"
   },
   {
     "number": "106",
     "name": "Britney Toxic",
     "description": "Пісня 'Toxic', часто використовується у мемах про фатальних жінок.",
-    "youtubelink": "https://www.youtube.com/watch?v=LOZuxwVk7TU"
+    "youtubelink": "https://www.youtube.com/watch?v=LOZuxwVk7TU",
+    "audio": "106 Britney_Toxic.mp3"
   },
   {
     "number": "107",
     "name": "Britney H",
-    "description": "Невизначений мем, можливо локальний або неповний."
+    "description": "Невизначений мем, можливо локальний або неповний.",
+    "auidio": "107 Britney_Hit_Me_Baby.mp3"
   },
   {
     "number": "108",
     "name": "Watermelon Sugar",
     "description": "Хіт Гаррі Стайлза, часто використовується у літніх мемах.",
-    "youtubelink": "https://www.youtube.com/watch?v=E07s5ZYygMg"
+    "youtubelink": "https://www.youtube.com/watch?v=E07s5ZYygMg",
+    "auidio": "108 Watermelon Sugar.mp3"
   },
   {
     "number": "109",
     "name": "summer inside",
-    "description": "Ймовірно, мем про літній настрій або атмосферу."
+    "description": "Ймовірно, мем про літній настрій або атмосферу.",
+    "audio": "109 summer inside.mp3"
   },
   {
     "number": "110",
@@ -671,7 +680,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/music/Paint-The-Town-Red-7263241548443568130",
       "youtube": "https://www.youtube.com/watch?v=m4_9TFeMfJE"
-    }
+    },
+    "audio": "110 Doja Cat - Paint The Town Red.mp3"
   },
   {
     "number": "110",
@@ -687,14 +697,16 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/@pedrotheracoon/video/7356225255095930145",
       "youtube": "https://www.youtube.com/watch?v=z5X0JMFJBPs"
-    }
+    },
+    "audio": "111 Pedro.mp3"
   },
   {
     "number": "112",
     "name": "Harry Styles - Late Night Talking",
     "links": {
       "tiktok": "https://www.tiktok.com/@hshq/video/7119894046734208302"
-    }
+    },
+    "audio": "112 Harry Styles - Late Night Talking.mp3"
   },
   {
     "number": "113",
@@ -702,7 +714,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/dua-lipa-hallucinate",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "113 Dua_Lipa_-_Hallucinate.mp3"
   },
   {
     "number": "114",
@@ -710,7 +723,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/music/Break-My-Heart-6807639165665019906",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "114 Dua Lipa - Break My Heart.mp3"
   },
   {
     "number": "115",
@@ -718,7 +732,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/dua-lipa-pretty-please-video",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "115 Dua Lipa - Pretty Please.mp3"
   },
   {
     "number": "116",
@@ -726,7 +741,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/dua-lipa-training-season",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "116 Dua Lipa - Training Season.mp3"
   },
   {
     "number": "117",
@@ -734,7 +750,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/@dualipaofficial/video/7299605725829942561",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "117 Dua Lipa - Houdini.mp3"
   },
   {
     "number": "118",
@@ -742,7 +759,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/music/Murder-On-The-Dancefloor-6928470186467018753",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "118 Sophie Ellis-Bextor - Murder On The Dancefloor.mp3"
   },
   {
     "number": "119",
@@ -750,7 +768,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/back-that-up-to-the-beat-madonna",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "119 Madonna - Back That Up To The Beat.mp3"
   },
   {
     "number": "120",
@@ -758,7 +777,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/enrique-iglesias-duele-el-corazon",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "120 Enrique Iglesias - DUELE EL CORAZON.mp3"
   },
   {
     "number": "121",
@@ -766,7 +786,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/telephone-by-lady-gaga",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "121 Telephone - Lady Gaga.mp3"
   },
   {
     "number": "122",
@@ -774,7 +795,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/call-me-by-your-name",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "122 Call Me By Your Name.mp3"
   },
   {
     "number": "123",
@@ -782,7 +804,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/katy-perry-bon-appetite",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "123 Bon Appetit - Katy Perry.mp3"
   },
   {
     "number": "124",
@@ -790,7 +813,8 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/imagine-dragons---sharks",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "124 Imagine Dragons - Sharks.mp3"
   },
   {
     "number": "125",
@@ -798,6 +822,7 @@ let memeData = [
     "links": {
       "tiktok": "https://www.tiktok.com/discover/imagine-dragons-natural",
       "youtube": "https://www.youtube.com/watch?v=F2YpXC1itEE"
-    }
+    },
+    "audio": "125 Imagine Dragons - Natural.mp3"
   }
 ];
