@@ -25,7 +25,7 @@ let memeData = [
     "name": "Я в ахуе давай",
     "description": "Фраза з відео, де хлопець в шоці і каже 'я в ахуе, давай', дуже популярний серед українських коротких відео.",
     "youtubelink": "https://www.youtube.com/shorts/LFslFyV0qx0",
-    "audio": "4 Я в ахуе давай.mp3"
+    "audio": "4 Я в ахуе давай.mp3"
   },
   {
     "number": "005",
@@ -67,7 +67,7 @@ let memeData = [
     "name": "Добрий вечір ведющій",
     "description": "Не знаю",
     "youtubelink": "",
-    "audio": "10 Добрий вечір ведющій.mp3"
+    "audio": "10 Добрий вечір ведющій.mp3"
   },
   {
     "number": "011",
