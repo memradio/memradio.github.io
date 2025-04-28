@@ -38,7 +38,7 @@ export function renderMemeList(container, memes) {
     item.addEventListener('click', (e) => {
       if (e.target.closest('.telegram') || e.target.closest('.bookmark-button')) return;
       desc.style.display = (desc.style.display === 'block') ? 'none' : 'block';
-      playMeme(index); // 🛠️ при кліку на мем запускаємо плеєр
+      playMeme(meme.number); // 🛠️ при кліку на мем запускаємо плеєр
     });
 
     list.appendChild(item);

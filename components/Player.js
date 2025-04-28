@@ -49,12 +49,14 @@ export function renderPlayer(container) {
 
 export function initPlayer(memes) {
   playlist = memes.filter(meme => meme.audio).map(meme => ({
+    number: meme.number,
     name: meme.name,
     audioUrl: 'audio/' + meme.audio
   }));
 }
 
-export function playMeme(index) {
+export function playMeme(memeNumber) {
+  const index = playlist.findIndex(meme => meme.number === memeNumber);
   if (index >= 0 && index < playlist.length) {
     currentIndex = index;
     const audioUrl = playlist[currentIndex].audioUrl;
