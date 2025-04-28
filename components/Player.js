@@ -59,9 +59,10 @@ export function playMeme(memeNumber) {
   const index = playlist.findIndex(meme => meme.number === memeNumber);
   if (index >= 0 && index < playlist.length) {
     currentIndex = index;
-    const audioUrl = playlist[currentIndex].audioUrl;
+    const m = playlist[currentIndex];
+    const audioUrl = m.audioUrl;
     globalPlayerElement.src = audioUrl;
-    currentMemeNameElement.textContent = playlist[currentIndex].name;
+    currentMemeNameElement.textContent = `${m.number}: ${m.name}`;
 
     console.log('🛠 Trying to play:', audioUrl);
 
@@ -69,6 +70,7 @@ export function playMeme(memeNumber) {
     globalPlayerElement.play()
       .then(() => {
         console.log('✅ Playing started');
+        highlightActiveMeme();
       })
       .catch(error => {
         console.error('❌ Play error:', error);
@@ -85,3 +87,18 @@ function togglePlayPause() {
     globalPlayerElement.pause();
   }
 }
+
+// ✨ Додаємо цю нову функцію:
+function highlightActiveMeme() {
+    const allItems = document.querySelectorAll('.meme-item');
+    allItems.forEach(item => item.classList.remove('active'));
+  
+    const activeNumber = playlist[currentIndex].audioUrl.split('/').pop().split(' ')[0]; // беремо номер
+    const activeItem = Array.from(allItems).find(item => 
+      item.querySelector('.meme-number')?.textContent.trim() === activeNumber
+    );
+  
+    if (activeItem) {
+      activeItem.classList.add('active');
+    }
+  }

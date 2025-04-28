@@ -91,4 +91,10 @@
   .bookmark-button.active {
     color: #ff9800;
   }
+
+  .meme-item.active {
+    background-color: #e3f2fd;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
   
