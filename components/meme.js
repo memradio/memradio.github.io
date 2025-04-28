@@ -1,6 +1,11 @@
 import { renderMemeList } from './MemeList.js';
+import { renderHeader } from './Header.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  const app = document.getElementById('app');
+  renderHeader(app, { smallLogo: true }); // маленька іконка
+
   const urlParams = new URLSearchParams(window.location.search);
   const memeId = urlParams.get('id');
 

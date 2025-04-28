@@ -10,7 +10,7 @@ let currentTab = 'all';
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
 
-  renderHeader(app);
+  renderHeader(app, { smallLogo: false });
   renderPlayer(app);
 
   const mainContent = document.createElement('div');
