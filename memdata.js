@@ -81,7 +81,7 @@ let memeData = [
     "name": "Нехуй заняться",
     "description": "Копіпаста з гумористичним описом бездіяльності, популярна в російськомовному інтернеті.",
     "youtubelink": "https://www.youtube.com/watch?v=XeiSDSyUA9I",
-    "audio": "12 нехуй заняться.mp3"
+    "audio": "12 нехуй заняться.mp3"
   },
   {
     "number": "013",
@@ -95,14 +95,14 @@ let memeData = [
     "name": "Притармажуй",
     "description": "Мем з українського тіктоку, де людина каже 'притармажуй'.",
     "youtubelink": "https://www.youtube.com/watch?v=0NzaNVb16bo",
-    "audio": "14 притармажуй.mp3"
+    "audio": "14 притармажуй.mp3"
   },
   {
     "number": "015",
     "name": "Нашо сохнути за тим довбойобом",
     "description": "Фраза з українського тіктоку, де жінка емоційно каже 'нашо сохнути за тим довбойобом'.",
     "youtubelink": "https://www.youtube.com/watch?v=1amgLEV-FA8",
-    "audio": "15 нашо сохнути за тим довбойобом.mp3"
+    "audio": "15 нашо сохнути за тим довбойобом.mp3"
   },
   {
     "number": "016",
@@ -116,7 +116,7 @@ let memeData = [
     "name": "Похуй похуй похуй",
     "description": "Мем з російського інтернету, де людина каже 'похуй похуй похуй'.",
     "youtubelink": "https://www.youtube.com/watch?v=7gkxO1bmiwk",
-    "audio": "17 похуй похуй похуй.mp3"
+    "audio": "17 похуй похуй похуй.mp3"
   },
   {
     "number": "018",
@@ -144,7 +144,7 @@ let memeData = [
     "name": "Шариш в этой теме",
     "description": "Фраза з російського інтернету, де людина запитує: 'Шариш в этой теме?' — популярна у відео з TikTok.",
     "youtubelink": "https://www.youtube.com/watch?v=Z30tOaVsTfY",
-    "audio": "21 Шариш в єтой теме.mp3"
+    "audio": "21 Шариш в єтой теме.mp3"
   },
   {
     "number": "022",
@@ -164,7 +164,7 @@ let memeData = [
   {
     "number": "025",
     "name": "пойми дура в мене живіт болить",
-    "audio": "25 пойми дура в мене живіт болить.mp3"
+    "audio": "25 пойми дура в мене живіт болить.mp3"
   },
   {
     "number": "026",
@@ -196,7 +196,7 @@ let memeData = [
     "name": "ну й ш ну й шо",
     "description": "Фраза з українського інтернету, популярна у відео з TikTok.",
     "youtubelink": "https://www.youtube.com/watch?v=zoP25GgQdao",
-    "audio": "31 ну й ш ну й шо.mp3"
+    "audio": "31 ну й ш ну й шо.mp3"
   },
   {
     "number": "032",
@@ -231,14 +231,14 @@ let memeData = [
     "name": "ой блять та ну",
     "description": "Фраза з українського інтернету, де людина каже: 'Ой блять та ну'.",
     "youtubelink": "https://www.youtube.com/watch?v=jW-gOh6hcj0",
-    "audio": "36 ой блять та ну.mp3"
+    "audio": "36 ой блять та ну.mp3"
   },
   {
     "number": "037",
     "name": "та блять йомайо",
     "description": "Фраза з російського інтернету, де людина каже: 'Та блять йомайо'.",
     "youtubelink": "https://www.youtube.com/watch?v=sznE8kKwqnY",
-    "audio": "37 та блять йомайо.mp3"
+    "audio": "37 та блять йомайо.mp3"
   },
   {
     "number": "038",
@@ -259,7 +259,7 @@ let memeData = [
     "name": "ухти ж йоханий бабай",
     "description": "Фраза з українського інтернету, де людина каже: 'Ухти ж йоханий бабай'.",
     "youtubelink": "https://www.youtube.com/watch?v=sw2WAfKOzFg",
-    "audio": "40 ухти ж йоханий бабай.mp3"
+    "audio": "40 ухти ж йоханий бабай.mp3"
   },
   {
     "number": "041",
@@ -294,7 +294,7 @@ let memeData = [
       "tiktok": "https://www.tiktok.com/%40taylerpremya/video/7494696807390252296?utm_source=chatgpt.com",
       "youtube": "https://www.youtube.com/watch?v=2843nS87Kis&utm_source=chatgpt.com"
     },
-    "audio": "44 сметана безхуйозна.mp3"
+    "audio": "44 сметана безхуйозна.mp3"
   },
   {
     "number": "045",
@@ -321,7 +321,7 @@ let memeData = [
       "tiktok": "https://www.tiktok.com/%40taylerpremya/video/7494696807390252296?utm_source=chatgpt.com",
       "youtube": "https://www.youtube.com/watch?v=2843nS87Kis&utm_source=chatgpt.com"
     },
-    "audio": "47 пиздуй із деревні.mp3"
+    "audio": "47 пиздуй із деревні.mp3"
   },
   {
     "number": "048",
@@ -330,7 +330,7 @@ let memeData = [
       "tiktok": "https://www.tiktok.com/%40taylerpremya/video/7494696807390252296?utm_source=chatgpt.com",
       "youtube": "https://www.youtube.com/watch?v=2843nS87Kis&utm_source=chatgpt.com"
     },
-    "audio": "48_Світлана_добрий_ранок,_йди_нахуй.mp3"
+    "audio": "48_Світлана_добрий_ранок,_йди_нахуй.mp3"
   },
   {
     "number": "049",
