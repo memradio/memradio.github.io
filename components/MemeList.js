@@ -8,7 +8,11 @@ export function renderMemeList(container, memes) {
   memes.forEach((meme, index) => {
     const item = document.createElement('div');
     item.className = 'meme-item';
-    const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}`;
+    const pathParts = window.location.pathname.split('/');
+    const fileName = pathParts[pathParts.length - 1];
+    const source = fileName.replace('.html', '') || null;
+    const sourceParam = source ? `&source=${source}` : '';
+    const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}${sourceParam}`;
     const shareText = `\`\`\`\n${meme.name}\n\`\`\``;
 
 
@@ -65,7 +69,7 @@ export function renderMemeList(container, memes) {
       const name = instagramBtn.dataset.name;
       const url = `${window.location.origin}/meme.html?id=${encodeURIComponent(id)}`;
       const text = `\`\`\`\n${name}\n\`\`\`\n${url}`;
-  
+
       if (navigator.share) {
         navigator.share({
           title: 'Мєм Рація',

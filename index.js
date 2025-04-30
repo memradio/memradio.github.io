@@ -37,45 +37,31 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFilteredMemes();
   renderFriendsTab(document.body);
 
-  showFriendsButton.addEventListener('click', () => {
-    memeListContainer.style.display = 'none';   // <- приховує меми
-    friendsTab.style.display = 'block';         // <- показує друзів
-    setActiveTab('showFriends');
-  });
+  function renderFilteredMemes() {
+    const memeListContainer = document.getElementById('memeListContainer');
+    const friendsTab = document.getElementById('friendsTab');
+    memeListContainer.innerHTML = '';
 
-  showFriendsButton.addEventListener('click', () => {
-    memeListContainer.style.display = 'none';   // <- приховує меми
-    friendsTab.style.display = 'block';         // <- показує друзів
-    setActiveTab('showFriends');
-  });
+    let filtered = memeData.filter(meme => meme.number.toLocaleLowerCase().includes(currentFilter.toLocaleLowerCase())
+      || meme.name.toLowerCase().includes(currentFilter.toLowerCase())
+      || (meme.description && meme.description.toLowerCase().includes(currentFilter.toLowerCase()))
+    );
+
+    if (currentTab === 'bookmarks') {
+      const bookmarks = JSON.parse(localStorage.getItem('bookmarkedMemes') || '[]');
+      filtered = filtered.filter(meme => bookmarks.includes(meme.number));
+    }
+
+    if (friendsTab) {
+      if (currentTab === 'showFriends') {
+        memeListContainer.style.display = 'none';   // <- приховує меми
+        friendsTab.style.display = 'block';
+      } else {
+        memeListContainer.style.display = 'block';   // <- приховує меми
+        friendsTab.style.display = 'none';
+      }
+    }
+
+    renderMemeList(memeListContainer, filtered);
+  }
 });
-
-function renderFilteredMemes() {
-  const memeListContainer = document.getElementById('memeListContainer');
-  const friendsTab = document.getElementById('friendsTab');
-  memeListContainer.innerHTML = '';
-
-  let filtered = memeData.filter(meme => meme.number.toLocaleLowerCase().includes(currentFilter.toLocaleLowerCase())
-    || meme.name.toLowerCase().includes(currentFilter.toLowerCase()) 
-    || (meme.description && meme.description.toLowerCase().includes(currentFilter.toLowerCase()))
-  );
-
-  if (currentTab === 'bookmarks') {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarkedMemes') || '[]');
-    filtered = filtered.filter(meme => bookmarks.includes(meme.number));
-  }
-
-  if(friendsTab){
-  if(currentTab === 'showFriends'){
-    debugger
-    memeListContainer.style.display = 'none';   // <- приховує меми
-    friendsTab.style.display = 'block';  
-  } else{
-    debugger
-    memeListContainer.style.display = 'block';   // <- приховує меми
-    friendsTab.style.display = 'none';  
-  }
-}
-
-  renderMemeList(memeListContainer, filtered);
-}
