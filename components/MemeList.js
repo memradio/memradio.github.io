@@ -15,6 +15,8 @@ export function renderMemeList(container, memes) {
         <div class="meme-number">${meme.number}</div>
         <div class="meme-name">${meme.name}</div>
         <button class="bookmark-button ${isBookmarked(meme.number) ? 'active' : ''}" title="Додати в збережене">&#9733;</button>
+            <span class="likebtn-wrapper" data-theme="custom" data-identifier="meme_${meme.number}" data-icon_l="hrt1" data-icon_d="thmb7-d"></span>
+
       </div>
       <div class="meme-description" style="display:none;">
         ${meme.description || ''}

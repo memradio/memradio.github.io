@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.title = `Мєм Рація — ${meme.name}`;
 
     renderMemeList(container, [meme]);
+    if (typeof LikeBtn !== 'undefined') {
+      LikeBtn.init();
+    }
     
     if (meme.audio) {
       const audio = document.createElement('audio');
