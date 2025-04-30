@@ -3,6 +3,7 @@ import { renderPlayer, initPlayer } from './components/Player.js';
 import { renderTabs } from './components/Tabs.js';
 import { renderSearch } from './components/Search.js';
 import { renderMemeList } from './components/MemeList.js';
+import { renderFriendsTab } from './components/FriendsTab.js';
 
 let currentFilter = '';
 let currentTab = 'all';
@@ -34,10 +35,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initPlayer(memeData); // Ініціалізувати плеєр
 
   renderFilteredMemes();
+  renderFriendsTab(document.body);
+
+  showFriendsButton.addEventListener('click', () => {
+    memeListContainer.style.display = 'none';   // <- приховує меми
+    friendsTab.style.display = 'block';         // <- показує друзів
+    setActiveTab('showFriends');
+  });
+
+  showFriendsButton.addEventListener('click', () => {
+    memeListContainer.style.display = 'none';   // <- приховує меми
+    friendsTab.style.display = 'block';         // <- показує друзів
+    setActiveTab('showFriends');
+  });
 });
 
 function renderFilteredMemes() {
   const memeListContainer = document.getElementById('memeListContainer');
+  const friendsTab = document.getElementById('friendsTab');
   memeListContainer.innerHTML = '';
 
   let filtered = memeData.filter(meme => meme.number.toLocaleLowerCase().includes(currentFilter.toLocaleLowerCase())
@@ -49,6 +64,18 @@ function renderFilteredMemes() {
     const bookmarks = JSON.parse(localStorage.getItem('bookmarkedMemes') || '[]');
     filtered = filtered.filter(meme => bookmarks.includes(meme.number));
   }
+
+  if(friendsTab){
+  if(currentTab === 'showFriends'){
+    debugger
+    memeListContainer.style.display = 'none';   // <- приховує меми
+    friendsTab.style.display = 'block';  
+  } else{
+    debugger
+    memeListContainer.style.display = 'block';   // <- приховує меми
+    friendsTab.style.display = 'none';  
+  }
+}
 
   renderMemeList(memeListContainer, filtered);
 }

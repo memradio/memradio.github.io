@@ -5,6 +5,7 @@ export function renderTabs(container, onTabChange) {
     tabsContainer.innerHTML = `
       <button id="showAll" class="tab-button active">Усі меми</button>
       <button id="showBookmarks" class="tab-button">Збережені меми</button>
+      <button id="showFriends" class="tab-button">Мем-хвилі друзів</button>
     `;
   
     container.appendChild(tabsContainer);
@@ -19,6 +20,12 @@ export function renderTabs(container, onTabChange) {
       createRipple(e);
       onTabChange('bookmarks');
       setActiveTab('showBookmarks');
+    });
+
+    tabsContainer.querySelector('#showFriends').addEventListener('click', (e) => {
+      createRipple(e);
+      onTabChange('showFriends');
+      setActiveTab('showFriends');
     });
 
     function createRipple(event) {
@@ -48,5 +55,6 @@ export function renderTabs(container, onTabChange) {
       tabsContainer.querySelector(`#${tabId}`).classList.add('active');
     }
       
+    
   }
   
