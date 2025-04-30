@@ -11,23 +11,30 @@ export function renderMemeList(container, memes) {
     const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}`;
 
     item.innerHTML = `
-      <div class="meme-header">
-        <div class="meme-number">${meme.number}</div>
-        <div class="meme-name">${meme.name}</div>
-        <button class="bookmark-button ${isBookmarked(meme.number) ? 'active' : ''}" title="Додати в збережене">&#9733;</button>
-            <span class="likebtn-wrapper" data-theme="custom" data-identifier="meme_${meme.number}" data-icon_l="hrt1" data-icon_d="thmb7-d"></span>
+  <div class="meme-header">
+    <div class="meme-number">${meme.number}</div>
+    <div class="meme-name">${meme.name}</div>
+  </div>
 
-      </div>
-      <div class="meme-description" style="display:none;">
-        ${meme.description || ''}
-        ${meme.youtubelink ? `<br><a class="meme-link" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
-        ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
-        ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
-      </div>
-      <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(meme.name)}" target="_blank">
-       <i class="fab fa-telegram-plane"></i>
-      </a>
-    `;
+  <div class="meme-description" style="display:none;">
+    ${meme.description || ''}
+    ${meme.youtubelink ? `<br><a class="meme-link" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
+    ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
+    ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
+  </div>
+
+  <div class="meme-actions">
+    <button class="action-button bookmark-button ${isBookmarked(meme.number) ? 'active' : ''}" title="Зберегти">
+      <i class="material-icons">bookmark</i>
+    </button>
+
+    <span class="likebtn-wrapper" data-theme="custom" data-identifier="meme_${meme.number}" data-icon_l="hrt1" data-icon_d="thmb7-d"></span>
+
+    <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(`${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}`)}&text=${encodeURIComponent(meme.name)}" target="_blank">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
+  </div>
+`;
 
     const bookmarkBtn = item.querySelector('.bookmark-button');
     bookmarkBtn.addEventListener('click', (e) => {
@@ -35,6 +42,7 @@ export function renderMemeList(container, memes) {
       toggleBookmark(meme.number);
       bookmarkBtn.classList.toggle('active');
     });
+    
 
     const desc = item.querySelector('.meme-description');
     item.addEventListener('click', (e) => {
