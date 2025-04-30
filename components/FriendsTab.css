@@ -1,0 +1,13 @@
+.user-tile .tile-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 6px;
+    opacity: 0.95;
+    transition: transform 0.2s ease;
+  }
+  
+  .user-tile:hover .tile-logo {
+    transform: scale(1.1);
+  }
+  
