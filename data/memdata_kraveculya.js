@@ -9,6 +9,7 @@ window.memeData = [
     {
       number: "002К",
       name: "002K пу пу пуу",
-      audio: "002K пу пу пуу.mp3"
+      audio: "002K пу пу пуу.mp3",
+      links: {"tiktok": "https://www.tiktok.com/@ruslan.tsyhankov/video/7440842937665146168"}
     }
   ];
