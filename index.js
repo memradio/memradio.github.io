@@ -40,9 +40,9 @@ function renderFilteredMemes() {
   const memeListContainer = document.getElementById('memeListContainer');
   memeListContainer.innerHTML = '';
 
-  let filtered = memeData.filter(meme =>
-    meme.name.toLowerCase().includes(currentFilter.toLowerCase()) ||
-    (meme.description && meme.description.toLowerCase().includes(currentFilter.toLowerCase()))
+  let filtered = memeData.filter(meme => meme.number.toLocaleLowerCase().includes(currentFilter.toLocaleLowerCase())
+    || meme.name.toLowerCase().includes(currentFilter.toLowerCase()) 
+    || (meme.description && meme.description.toLowerCase().includes(currentFilter.toLowerCase()))
   );
 
   if (currentTab === 'bookmarks') {
