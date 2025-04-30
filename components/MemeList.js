@@ -9,6 +9,8 @@ export function renderMemeList(container, memes) {
     const item = document.createElement('div');
     item.className = 'meme-item';
     const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}`;
+    const shareText = `\`\`\`\n${meme.name}\n\`\`\``;
+
 
     item.innerHTML = `
   <div class="meme-header">
@@ -30,7 +32,7 @@ export function renderMemeList(container, memes) {
 
     <span class="likebtn-wrapper" data-theme="custom" data-identifier="meme_${meme.number}" data-icon_l="hrt1" data-icon_d="thmb7-d"></span>
 
-    <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(`${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}`)}&text=${encodeURIComponent(meme.name)}" target="_blank">
+    <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(shareText)}" target="_blank">
       <i class="fab fa-telegram-plane"></i>
     </a>
   </div>
