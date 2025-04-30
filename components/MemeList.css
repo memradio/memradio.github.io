@@ -56,6 +56,10 @@
   background-color: #69c9d0;
 }
 
+.meme-link.youtube {
+  background-color: #FF0000;
+}
+
 .meme-link.telegram {
   background-color: #0088cc;
   color: white;

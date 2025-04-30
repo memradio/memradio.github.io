@@ -20,8 +20,8 @@ export function renderMemeList(container, memes) {
 
   <div class="meme-description" style="display:none;">
     ${meme.description || ''}
-    ${meme.youtubelink ? `<br><a class="meme-link" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
-    ${meme.links?.youtube ? `<br><a class="meme-link" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
+    ${meme.youtubelink ? `<br><a class="meme-link youtube" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
+    ${meme.links?.youtube ? `<br><a class="meme-link youtube" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
     ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
   </div>
 

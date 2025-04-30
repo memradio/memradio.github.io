@@ -70,7 +70,7 @@ export function playMeme(memeNumber) {
     globalPlayerElement.play()
       .then(() => {
         console.log('✅ Playing started');
-        highlightActiveMeme();
+        highlightActiveMeme(memeNumber);
       })
       .catch(error => {
         console.error('❌ Play error:', error);
@@ -89,13 +89,12 @@ function togglePlayPause() {
 }
 
 // ✨ Додаємо цю нову функцію:
-function highlightActiveMeme() {
+function highlightActiveMeme(memeNumber) {
     const allItems = document.querySelectorAll('.meme-item');
     allItems.forEach(item => item.classList.remove('active'));
   
-    const activeNumber = playlist[currentIndex].audioUrl.split('/').pop().split(' ')[0]; // беремо номер
     const activeItem = Array.from(allItems).find(item => 
-      item.querySelector('.meme-number')?.textContent.trim() === activeNumber
+      item.querySelector('.meme-number')?.textContent.trim() === memeNumber
     );
   
     if (activeItem) {
