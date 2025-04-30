@@ -4,8 +4,8 @@ export function renderHeader(container, options = {}) {
   
     // Визначаємо який логотип вставляти
     const logoSrc = options.smallLogo
-      ? 'image/favicon.ico'
-      : 'image/logo-full.png';
+      ? '/image/favicon.ico'
+      : '/image/logo-full.png';
   
     header.innerHTML = `
       <div class="logo">
