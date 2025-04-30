@@ -8,9 +8,10 @@ export function renderHeader(container, options = {}) {
       : '/image/logo-full.png';
   
     header.innerHTML = `
-      <div class="logo">
+      <a href="/" class="logo">
+      
         <img src="${logoSrc}" alt="Logo" class="${options.smallLogo ? 'small-logo' : 'full-logo'}">
-      </div>
+      </a>
       <h1 class="title">Мєм Рація</h1>
     `;
   
