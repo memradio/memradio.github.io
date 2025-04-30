@@ -142,3 +142,29 @@
   justify-content: center;
   height: 36px;
 }
+
+.instagram-share {
+  background-color: #e1306c;
+  color: white;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  border-radius: 50%;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.instagram-share:hover {
+  background-color: #c2185b;
+  transform: scale(1.08);
+}
+
+@media (min-width: 768px) {
+  .instagram-share {
+    display: none !important;
+  }
+}

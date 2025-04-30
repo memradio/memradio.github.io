@@ -32,6 +32,9 @@ export function renderMemeList(container, memes) {
 
     <span class="likebtn-wrapper" data-theme="custom" data-identifier="meme_${meme.number}" data-icon_l="hrt1" data-icon_d="thmb7-d"></span>
 
+    <button class="meme-link instagram-share" data-id="${meme.number}" data-name="${meme.name}" title="Поділитися в Instagram">
+      <i class="fab fa-instagram"></i>
+    </button>
     <a class="meme-link telegram" href="https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(shareText)}" target="_blank">
       <i class="fab fa-telegram-plane"></i>
     </a>
@@ -44,7 +47,7 @@ export function renderMemeList(container, memes) {
       toggleBookmark(meme.number);
       bookmarkBtn.classList.toggle('active');
     });
-    
+
 
     const desc = item.querySelector('.meme-description');
     item.addEventListener('click', (e) => {
@@ -54,6 +57,25 @@ export function renderMemeList(container, memes) {
     });
 
     list.appendChild(item);
+
+    const instagramBtn = item.querySelector('.instagram-share');
+    instagramBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = instagramBtn.dataset.id;
+      const name = instagramBtn.dataset.name;
+      const url = `${window.location.origin}/meme.html?id=${encodeURIComponent(id)}`;
+      const text = `\`\`\`\n${name}\n\`\`\`\n${url}`;
+  
+      if (navigator.share) {
+        navigator.share({
+          title: 'Мєм Рація',
+          text: name,
+          url: url
+        });
+      } else {
+        alert("Instagram sharing доступне лише на мобільному пристрої");
+      }
+    });
   });
 
   container.appendChild(list);
