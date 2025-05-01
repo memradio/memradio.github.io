@@ -1,3 +1,4 @@
+import {renderScrollBtn} from '/components/scrollToTopBtn.js'
 export function renderHeader(container, options = {}) {
     const header = document.createElement('div');
     header.className = 'header';
@@ -16,5 +17,6 @@ export function renderHeader(container, options = {}) {
     `;
   
     container.appendChild(header);
+    renderScrollBtn(header);
   }
   
