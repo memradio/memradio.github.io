@@ -80,7 +80,39 @@ export function renderMemeList(container, memes) {
         alert("Instagram sharing доступне лише на мобільному пристрої");
       }
     });
+
+    if(memes.length < 5){
+      debugger
+      const tracker = renderViewsTracker(meme, memes.length > 1);
+      item.appendChild(tracker);
+    }
   });
 
   container.appendChild(list);
+
+
+
+  function renderViewsTracker(meme, readOnly) {
+    const s = document.createElement("script");
+    s.src = "https://counterapi.com/c.js";
+    s.setAttribute("async", "");
+
+    const el = document.createElement('div');
+    const key = `${window.location.host}-${meme.number}`;
+    el.innerHTML = `
+  <div class="counterapi" 
+        style="min-height:44px" 
+        key="${key}"
+        icon="eye"
+        label="переглядів"
+        color="#666"
+        icon-color="#2196f3"
+        bg="transparent"
+        hide-if-zero="true"
+        no-link="true"
+        readOnly=${readOnly}
+        anim-duration="800"></div>`;
+        el.appendChild(s);
+      return el;
+  }
 }
