@@ -99,6 +99,7 @@ export function renderMemeList(container, memes) {
 
     const el = document.createElement('div');
     const key = `${window.location.host}-${meme.number}`;
+    const readOnlyAttr = readOnly ? `readOnly=${readOnly}` : '';
     el.innerHTML = `
   <div class="counterapi" 
         style="min-height:44px" 
@@ -110,7 +111,7 @@ export function renderMemeList(container, memes) {
         bg="transparent"
         hide-if-zero="true"
         no-link="true"
-        readOnly=${readOnly}
+        ${readOnlyAttr}
         anim-duration="800"></div>`;
         el.appendChild(s);
       return el;
