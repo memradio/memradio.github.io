@@ -82,7 +82,6 @@ export function renderMemeList(container, memes) {
     });
 
     if(memes.length < 5){
-      debugger
       const tracker = renderViewsTracker(meme, memes.length > 1);
       item.appendChild(tracker);
     }
