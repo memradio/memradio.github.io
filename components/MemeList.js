@@ -11,7 +11,7 @@ export function renderMemeList(container, memes) {
     const pathParts = window.location.pathname.split('/');
     const fileName = pathParts[pathParts.length - 1];
     const source = fileName.replace('.html', '') || null;
-    const sourceParam = source ? `&source=${source}` : '';
+    const sourceParam = source && source != 'index' ? `&source=${source}` : '';
     const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}${sourceParam}`;
     const shareText = `\`\`\`\n${meme.name}\n\`\`\``;
 

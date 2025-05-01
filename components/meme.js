@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const source = urlParams.get('source');
 
 
-  if (source) {
+  if (source && source != 'index') {
 
     const dataScript = document.createElement("script");
     dataScript.src = `data/memdata_${source}.js`;
