@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPlayer(memeData); // Ініціалізувати плеєр
 
   renderFilteredMemes();
-  renderFriendsTab(document.body);
+  renderFriendsTab(mainContent);
 
   function renderFilteredMemes() {
     const memeListContainer = document.getElementById('memeListContainer');

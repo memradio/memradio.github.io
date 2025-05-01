@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Звʼязок з нами — Мєм Рація</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/components/Footer.css">
+    <link rel="stylesheet" href="/components/Header.css">
+    <link rel="stylesheet" href="/components/contactus.css">
+</head>
+
+<body>
+
+    <div id="app"></div>
+    <div id="mainContent"></div>
+
+    <h1>Звʼязок з нами</h1>
+
+    <div class="contact-links">
+        <p>
+            ✉ Напиши нам:
+            <a href="mailto:proladge@gmail.com">memradio@protonmail.com</a>
+        </p>
+        <p>
+            <a href="https://t.me/v_kovi" target="_blank" class="tg-link">
+                <i class="fab fa-telegram-plane"></i> @memradio
+            </a>
+        </p>
+    </div>
+
+
+    <form id="contact-form">
+        <label for="message">Повідомлення:</label>
+        <textarea name="message" id="message" required></textarea>
+        <button type="submit">Надіслати</button>
+        <div class="success-message" id="success-message" style="display: none;">
+            Дякуємо! Ваше повідомлення надіслано.
+        </div>
+    </form>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Створено з любов'ю до мемів у проєкті <strong>Мєм Рація</strong></p>
+            <p>🛋 <a href="/pages/contactus.html">Зв'язатись з нами</a></p>
+        </div>
+    </footer>
+
+    <script type="module" src="/components/contactus.js"></script>
+</body>
+
+</html>

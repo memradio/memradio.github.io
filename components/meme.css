@@ -27,4 +27,8 @@
   .material-icons {
     font-size: 20px;
   }
-  
+
+  #mainContent {
+    margin-top: 80px !important;
+    padding: 20px;
+}
