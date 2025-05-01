@@ -8,6 +8,7 @@ export function renderMemeList(container, memes) {
   memes.forEach((meme, index) => {
     const item = document.createElement('div');
     item.className = 'meme-item';
+    item.setAttribute("data-number", meme.number);
     const pathParts = window.location.pathname.split('/');
     const fileName = pathParts[pathParts.length - 1];
     const source = fileName.replace('.html', '') || null;
@@ -81,7 +82,7 @@ export function renderMemeList(container, memes) {
       }
     });
 
-    if(memes.length < 5){
+    if (memes.length < 5) {
       const tracker = renderViewsTracker(meme, memes.length > 1);
       item.appendChild(tracker);
     }
@@ -89,6 +90,23 @@ export function renderMemeList(container, memes) {
 
   container.appendChild(list);
 
+  AfterRender();
+
+
+  function AfterRender() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#scrollto-')) {
+      const memeNumber = hash.replace('#scrollto-', '');
+      // Шукаємо елемент із data-number або класом
+      const target = document.querySelector(`.meme-item[data-number="${memeNumber}"]`);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('active'); // можна додати візуальну підсвітку
+        }, 300); // трохи почекати, щоб DOM точно був готовий
+      }
+    }
+  }
 
 
   function renderViewsTracker(meme, readOnly) {
@@ -112,7 +130,7 @@ export function renderMemeList(container, memes) {
         no-link="true"
         ${readOnlyAttr}
         anim-duration="800"></div>`;
-        el.appendChild(s);
-      return el;
+    el.appendChild(s);
+    return el;
   }
 }

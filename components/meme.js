@@ -29,7 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const backButton = document.getElementById('backButton');
   backButton.addEventListener('click', () => {
-    window.location.href = 'index.html';
+    const scrollUrl = source
+      ? `/pages/${source}.html#scrollto-${memeId}`
+      : `/index.html#scrollto-${memeId}`;
+    window.location.href = scrollUrl;
   });
 
   function renderMeme(meme) {
