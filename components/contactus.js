@@ -50,7 +50,7 @@ export function renderContactUs() {
     document.addEventListener('DOMContentLoaded', () => {
 
         const app = document.getElementById('mainContent');
-        renderHeader(app, { smallLogo: false });
+        renderHeader(app, { smallLogo: false, displayToggle: false });
     });
 }
 renderContactUs();

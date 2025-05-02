@@ -6,6 +6,7 @@ let currentIndex = -1;
 export function renderPlayer(container) {
   const playerContainer = document.createElement('div');
   playerContainer.id = 'globalPlayerContainer';
+  playerContainer.classList.toggle('text-mode', localStorage.getItem('textModeToggle') === 'true');
 
   playerContainer.innerHTML = `
     <audio id="globalPlayer" controls controlsList="nodownload"></audio>
@@ -62,6 +63,11 @@ export function initPlayer(memes) {
 }
 
 export function playMeme(memeNumber) {
+
+  if(localStorage.getItem('textModeToggle') === 'true'){
+    return;
+  }
+
   const index = playlist.findIndex(meme => meme.number === memeNumber);
   if (index >= 0 && index < playlist.length) {
     currentIndex = index;

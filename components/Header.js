@@ -22,13 +22,16 @@ export function renderHeader(container, options = {}) {
   renderScrollBtn(header);
 
 
-  const toggle = createMaterialToggle({
-    id: 'textModeToggle',
-    label: 'Режим тексту',
-    emojiOn: '📃',
-    emojiOff: '🎵',
-    defaultState: false
-  });
+  if (options.displayToggle) {
 
-  header.appendChild(toggle);
+    const toggle = createMaterialToggle({
+      id: 'textModeToggle',
+      label: 'Режим тексту',
+      emojiOn: '📃',
+      emojiOff: '🎵',
+      defaultState: false
+    });
+
+    header.appendChild(toggle);
+  }
 }

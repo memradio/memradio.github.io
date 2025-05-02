@@ -4,6 +4,7 @@ import { playMeme } from './Player.js'; // додали імпорт для ви
 export function renderMemeList(container, memes) {
   const list = document.createElement('div');
   list.className = 'meme-list';
+  list.classList.toggle('text-mode', localStorage.getItem('textModeToggle') === 'true');
 
   memes.forEach((meme, index) => {
     const item = document.createElement('div');

@@ -11,7 +11,7 @@ let currentTab = 'all';
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
 
-  renderHeader(app, { smallLogo: false });
+  renderHeader(app, { smallLogo: false, displayToggle: true });
   renderPlayer(app);
 
   const mainContent = document.createElement('div');
