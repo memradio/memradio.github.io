@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mainContent = document.createElement('div');
   mainContent.id = 'mainContent';
+  mainContent.classList.toggle('text-mode', localStorage.getItem('textModeToggle') === 'true');
   app.appendChild(mainContent);
 
   renderTabs(mainContent, (tab) => {
