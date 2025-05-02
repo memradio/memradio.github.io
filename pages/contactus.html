@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/components/Footer.css">
     <link rel="stylesheet" href="/components/Header.css">
     <link rel="stylesheet" href="/components/contactus.css">
+    <link rel="stylesheet" href="/components/scrollToTopBtn.css">
 </head>
 
 <body>
@@ -33,13 +34,26 @@
 
 
     <form id="contact-form">
+
+        <label>
+          <input type="checkbox" id="wantReply"> Хочу отримати відповідь
+        </label>
+      
+        <div id="emailField" style="display: none;">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" placeholder="name@example.com">
+        </div>
+      
         <label for="message">Повідомлення:</label>
         <textarea name="message" id="message" required></textarea>
+      
         <button type="submit">Надіслати</button>
         <div class="success-message" id="success-message" style="display: none;">
-            Дякуємо! Ваше повідомлення надіслано.
+          Дякуємо! Ваше повідомлення надіслано.
         </div>
-    </form>
+      </form>
+      
+
 
     <footer class="footer">
         <div class="footer-content">
