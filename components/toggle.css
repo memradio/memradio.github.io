@@ -5,6 +5,8 @@
     gap: 10px;
     margin-bottom: 20px;
     font-size: 14px;
+    position: absolute;
+    right: 20px;
   }
   .material-switch {
     position: relative;
