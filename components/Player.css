@@ -69,3 +69,6 @@
     color: #777;
   }
   
+  #globalPlayerContainer.text-mode{
+  display: none !important;
+}

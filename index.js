@@ -64,4 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderMemeList(memeListContainer, filtered);
   }
+
+
+  window.addEventListener('textModeToggled', (e) => {
+    const isText = e.detail.enabled;
+    mainContent.classList.toggle('text-mode', isText);
+  });
 });

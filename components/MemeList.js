@@ -133,4 +133,10 @@ export function renderMemeList(container, memes) {
     el.appendChild(s);
     return el;
   }
+
+  window.addEventListener('textModeToggled', (e) => {
+    const isText = e.detail.enabled;
+    list.classList.toggle('text-mode', isText);
+  });
+
 }

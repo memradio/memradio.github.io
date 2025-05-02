@@ -45,6 +45,12 @@ export function renderPlayer(container) {
       }, 3000);
     }
   });
+
+
+  window.addEventListener('textModeToggled', (e) => {
+    const isText = e.detail.enabled;
+    playerContainer.classList.toggle('text-mode', isText);
+  });
 }
 
 export function initPlayer(memes) {
