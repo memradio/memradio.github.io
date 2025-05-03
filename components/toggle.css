@@ -53,3 +53,9 @@
     align-items: center;
     gap: 6px;
   }
+
+  @media (max-width: 500px) {
+    .material-label>.textModeToggle-label-text {
+      display: none;
+    }
+  }

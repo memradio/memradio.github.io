@@ -13,7 +13,8 @@ export function createMaterialToggle({
         <span class="material-slider"></span>
       </label>
       <span class="material-label">
-        <span id="${id}-emoji">${defaultState ? emojiOn : emojiOff}</span> ${label}
+        <span id="${id}-emoji">${defaultState ? emojiOn : emojiOff}</span>
+        <span class="textModeToggle-label-text">${label}</span>
       </span>
     `;
   
