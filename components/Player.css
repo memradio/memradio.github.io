@@ -72,3 +72,21 @@
   #globalPlayerContainer.text-mode{
   display: none !important;
 }
+
+.player-controls button {
+  background: #e3f2fd;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  color: #1976d2;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.player-controls button:hover {
+  background: #bbdefb;
+  transform: scale(1.1);
+}

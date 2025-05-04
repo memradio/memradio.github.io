@@ -14,6 +14,9 @@ export function renderPlayer(container) {
       <button id="prevButton"><span class="material-icons">skip_previous</span></button>
       <button id="playPauseButton"><span class="material-icons" id="playPauseIcon">play_arrow</span></button>
       <button id="nextButton"><span class="material-icons">skip_next</span></button>
+      <button id="buyRadioButton" title="Купити рацію">
+        <span class="material-icons">storefront</span>
+      </button>
     </div>
     <div id="currentMemeName"></div>
   `;
@@ -51,6 +54,10 @@ export function renderPlayer(container) {
   window.addEventListener('textModeToggled', (e) => {
     const isText = e.detail.enabled;
     playerContainer.classList.toggle('text-mode', isText);
+  });
+
+  document.getElementById('buyRadioButton').addEventListener('click', () => {
+    window.open('/pages/landing#order', '_blank');
   });
 }
 
