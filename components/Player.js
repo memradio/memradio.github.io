@@ -57,7 +57,7 @@ export function renderPlayer(container) {
   });
 
   document.getElementById('buyRadioButton').addEventListener('click', () => {
-    window.open('/pages/landing#order', '_blank');
+    window.open('/pages/store', '_blank');
   });
 }
 

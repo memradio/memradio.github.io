@@ -7,7 +7,7 @@ export function renderFriendsTab(container) {
     wrapper.innerHTML = `
       <h3>🔸 Мем-хвилі друзів:</h3>
       <div class="user-grid">
-        <a href="/pages/kraveculya.html" class="user-tile">
+        <a href="/pages/kraveculya" class="user-tile">
           <span class="emoji">👩</span>
           <span class="name">Kraveculya</span>
         </a>

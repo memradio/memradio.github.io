@@ -45,12 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hideOnlineVer = () => {
         const onlineVersion = document.querySelector('#online-version');
-        onlineVersion.style.display = 'none';
+        onlineVersion.style.display = window.location.href.includes('#order') ? 'none' : 'flex';
     }
 
-    if (window.location.href.includes('#order')) {
-        hideOnlineVer();
-    }
+    hideOnlineVer();
 
     window.addEventListener('popstate', hideOnlineVer);
 
