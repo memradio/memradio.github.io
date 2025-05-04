@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0e1621;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+p.sub {
+    font-size: 20px;
+    color: #ccc;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.hero-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 300px;
+    padding-bottom: 20px;
+}
+
+.hero img {
+    max-width: 220px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-yellow {
+    background-color: #ffd000;
+    color: #000;
+}
+
+.btn-yellow:hover {
+    background-color: #ffbf00;
+}
+
+.btn-dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn-dark:hover {
+    background-color: #555;
+}
