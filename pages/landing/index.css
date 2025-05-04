@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #fffefc;
+    color: #1c1c1c;
+    line-height: 1.6;
+}
+
+header,
+section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1,
+h2 {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+p.sub {
+    font-size: 18px;
+    color: #444;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-img {
+    position: relative;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.hero-img img {
+    width: 100%;
+    display: block;
+}
+
+.bubble {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.cta {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.btn {
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid #0038a8;
+    background: #0038a8;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn.outline {
+    background: white;
+    color: #0038a8;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.features img {
+    width: 120px;
+}
+
+.device-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.price-block {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+.testimonials {
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.player {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.filter-tabs span {
+    color: #0038a8;
+    cursor: pointer;
+}
+
+.tracklist {
+    list-style: none;
+    padding: 0;
+}
+
+.tracklist li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-bubble {
+    background-color: #86d5fa; /* світло-блакитний */
+    color: #333;
+    max-width: 600px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    margin: 30px auto;
+    font-size: 15px;
+    line-height: 1.5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .chat-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #86d5fa;
+    border-bottom: 0;
+    border-right: 0;
+    margin-left: -5px;
+    margin-bottom: -10px;
+    
+  }
+  
