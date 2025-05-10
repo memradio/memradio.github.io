@@ -1,5 +1,5 @@
 import { getBookmarks, isBookmarked, toggleBookmark } from './Bookmarks.js';
-import { playMeme } from './Player.js'; // додали імпорт для виклику playMeme(index)
+import { playMemeByNumber } from './Player.js';
 
 export function renderMemeList(container, memes) {
   const list = document.createElement('div');
@@ -66,7 +66,7 @@ export function renderMemeList(container, memes) {
     item.addEventListener('click', (e) => {
       if (e.target.closest('.telegram') || e.target.closest('.bookmark-button')) return;
       desc.style.display = (desc.style.display === 'block') ? 'none' : 'block';
-      playMeme(meme.number); // 🛠️ при кліку на мем запускаємо плеєр
+      playMemeByNumber(meme.number); // 🛠️ при кліку на мем запускаємо плеєр
     });
 
     list.appendChild(item);

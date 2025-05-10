@@ -28,10 +28,11 @@ export function renderPlayer(container) {
 
   document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
   document.getElementById('prevButton').addEventListener('click', () => {
-    if (currentIndex > 0) playMeme(currentIndex - 1);
+    if (currentIndex > 0) playMemeByIndex(currentIndex - 1);
   });
   document.getElementById('nextButton').addEventListener('click', () => {
-    if (currentIndex < playlist.length - 1) playMeme(currentIndex + 1);
+    console.log('currentIndex', currentIndex);
+    if (currentIndex < playlist.length - 1) playMemeByIndex(currentIndex + 1);
   });
 
   globalPlayerElement.addEventListener('play', () => {
@@ -45,7 +46,7 @@ export function renderPlayer(container) {
   globalPlayerElement.addEventListener('ended', () => {
     if (currentIndex < playlist.length - 1) {
       setTimeout(() => {
-        playMeme(currentIndex + 1);
+        playMemeByIndex(currentIndex + 1);
       }, 3000);
     }
   });
@@ -69,34 +70,48 @@ export function initPlayer(memes) {
   }));
 }
 
-export function playMeme(memeNumber) {
 
+export function playMemeByNumber(memeNumber) {
   if(localStorage.getItem('textModeToggle') === 'true'){
     return;
   }
 
   const index = playlist.findIndex(meme => meme.number === memeNumber);
-  if (index >= 0 && index < playlist.length) {
-    currentIndex = index;
-    const m = playlist[currentIndex];
-    const audioUrl = m.audioUrl;
-    globalPlayerElement.src = audioUrl;
-    currentMemeNameElement.textContent = `${m.number}: ${m.name}`;
+  playMemeByIndex(index);
+}
 
-    console.log('🛠 Trying to play:', audioUrl);
-
-    globalPlayerElement.load();
-    globalPlayerElement.play()
-      .then(() => {
-        console.log('✅ Playing started');
-        highlightActiveMeme(memeNumber);
-      })
-      .catch(error => {
-        console.error('❌ Play error:', error);
-      });
-  } else {
-    console.warn('⚠️ Invalid index:', index);
+export function playMemeByIndex(index){
+    if(localStorage.getItem('textModeToggle') === 'true'){
+    return;
   }
+
+  if(index < 0){
+    console.warn('⚠️ mem not found in playlist:', index);
+    return;
+  }
+
+  if(index > playlist.length){
+    console.warn('⚠️ mem not found in playlist. Meme is beyond current playlist:', index);
+    return;
+  }
+
+  currentIndex = index;
+  const m = playlist[currentIndex];
+  const audioUrl = m.audioUrl;
+  globalPlayerElement.src = audioUrl;
+  currentMemeNameElement.textContent = `${m.number}: ${m.name}`;
+
+  console.log('🛠 Trying to play:', audioUrl);
+
+  globalPlayerElement.load();
+  globalPlayerElement.play()
+    .then(() => {
+      console.log('✅ Playing started');
+      highlightActiveMeme(memeNumber);
+    })
+    .catch(error => {
+      console.error('❌ Play error:', error);
+    });
 }
 
 function togglePlayPause() {
