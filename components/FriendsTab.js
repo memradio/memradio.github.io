@@ -11,7 +11,7 @@ export function renderFriendsTab(container) {
           <span class="emoji">👩</span>
           <span class="name">Kraveculya</span>
         </a>
-        <a href="/pages/oleg.html" class="user-tile">
+        <a href="/pages/oleg" class="user-tile">
           <span class="emoji">🧔</span>
           <span class="name">Олег</span>
         </a>
