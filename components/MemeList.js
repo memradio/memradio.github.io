@@ -29,6 +29,13 @@ export function renderMemeList(container, memes) {
     ${meme.youtubelink ? `<br><a class="meme-link youtube" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
     ${meme.links?.youtube ? `<br><a class="meme-link youtube" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
     ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
+      ${meme.links?.instagram ? `
+    <br>
+    <a href="${meme.links.instagram}" target="_blank" class="instagram-button">
+      <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+        <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6.5-.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+      </svg>
+    </a>` : ''}
   </div>
 
   <div class="meme-actions">

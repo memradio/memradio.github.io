@@ -56,6 +56,30 @@
   background-color: #69c9d0;
 }
 
+
+.instagram-button {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-top: 4px;
+  transition: transform 0.2s ease;
+}
+
+.instagram-button:hover {
+  transform: scale(1.1);
+}
+
+.instagram-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
 .meme-link.youtube {
   background-color: #FF0000;
 }
