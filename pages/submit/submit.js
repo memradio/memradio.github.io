@@ -47,3 +47,30 @@ form.addEventListener('submit', async (e) => {
     }, 3000);
   }
 });
+
+let githubToken = localStorage.getItem('github_token') || '';
+
+document.getElementById('loginBtn').addEventListener('click', () => {
+  document.getElementById('loginModal').style.display = 'flex';
+});
+
+document.getElementById('cancelLogin').addEventListener('click', () => {
+  document.getElementById('loginModal').style.display = 'none';
+});
+
+document.getElementById('confirmLogin').addEventListener('click', () => {
+  const token = document.getElementById('tokenInput').value.trim();
+  if (token.startsWith('ghp_')) {
+    githubToken = token;
+    localStorage.setItem('github_token', token);
+    document.getElementById('loginModal').style.display = 'none';
+    alert('✅ Токен збережено!');
+  } else {
+    alert('❌ Невірний токен');
+  }
+});
+
+// 👉 Export this for use in submitMemeToGitHub
+export function getGitHubToken() {
+  return githubToken;
+}

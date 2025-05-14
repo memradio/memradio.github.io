@@ -12,6 +12,7 @@
 <body>
   <div class="container">
     <h1>📤 Надішли свій мем</h1>
+    <button id="loginBtn" class="btn">🔐 Увійти з GitHub токеном</button>
     <p class="sub">Ми додамо найкращі пропозиції до бібліотеки рації</p>
 
     <form id="submitForm" class="submit-form">
@@ -35,6 +36,19 @@
       ✅ Дякуємо! Ми розглянемо твій мем і, можливо, додамо його до рації!
     </div>
   </div>
+
+  <div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>🔐 Авторизація GitHub</h2>
+      <p>Встав сюди свій <code>GitHub Token</code>:</p>
+      <input type="password" id="tokenInput" placeholder="ghp_..." />
+      <div class="modal-actions">
+        <button id="confirmLogin" class="btn">Зберегти</button>
+        <button id="cancelLogin" class="btn">Скасувати</button>
+      </div>
+    </div>
+  </div>
+
 
   <script type="module" src="./submit.js"></script>
 </body>
