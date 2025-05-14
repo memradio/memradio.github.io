@@ -88,6 +88,8 @@ form.addEventListener('submit', async (e) => {
   try {
     const formData = new FormData(form);
     const audioFile = formData.get('audio');
+    const sourceFile = formData.get('sourceFile')?.trim();
+    if (!sourceFile) throw new Error('Файл для збереження не вибрано');
 
     const newMemeObject = {
       name: formData.get('name')?.trim(),
@@ -100,7 +102,7 @@ form.addEventListener('submit', async (e) => {
     };
 
     await submitMemeToGitHub({
-      sourceFile: 'memdata_kraveculya.js',
+      sourceFile,
       newMemeObject,
       audioFile
     });
@@ -149,7 +151,7 @@ async function fetchDataFileList() {
   const GITHUB_USERNAME = 'memradio';
   const REPO = 'memradio.github.io';
   const API_BASE = 'https://api.github.com';
-  
+
   const select = document.getElementById('sourceFile');
   select.innerHTML = '<option value="">Завантаження...</option>';
 

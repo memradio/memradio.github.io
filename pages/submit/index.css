@@ -130,11 +130,14 @@
   color: #3f51b5;
 }
 
-/* Іконки */
-.icon-input {
-  position: relative;
+/* Inputs with right-side icons */
+.icon-input input,
+.icon-input select {
+  padding-right: 48px;
+  box-sizing: border-box;
 }
 
+/* Icon styles (unchanged) */
 .icon-input .icon {
   position: absolute;
   right: 16px;
