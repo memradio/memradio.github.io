@@ -30,4 +30,13 @@ window.memeData = [
         audio: "005K То якого фіга ти мішаєш.mp4",
         links: {"instagram": "https://www.instagram.com/reel/DIzNOFhND4l"}
     },
-  ];
+{
+  "name": "Луцьк",
+  "links": {
+    "youtube": "",
+    "tiktok": "https://www.tiktok.com/@nadiastupak/video/7251211720746749190",
+    "instagram": ""
+  },
+  "audio": ""
+}
+]
