@@ -30,4 +30,13 @@ window.memeData = [
         audio: "005K То якого фіга ти мішаєш.mp4",
         links: {"instagram": "https://www.instagram.com/reel/DIzNOFhND4l"}
     },
-  ];
+{
+  "name": "volodymyr",
+  "links": {
+    "youtube": "https://music.youtube.com/watch?v=D4adtkxf6V8",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": "tdddd.mp4"
+}
+]
