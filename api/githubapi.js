@@ -2,13 +2,7 @@
 const GITHUB_USERNAME = 'memradio'; // твій GitHub логін або організація
 const REPO = 'memradio.github.io';
 const MAIN_BRANCH = 'main';
-const GITHUB_TOKEN = ''; // 🔐 вставиш пізніше
-
 const API_BASE = 'https://api.github.com';
-const headers = {
-  Authorization: `token ${GITHUB_TOKEN}`,
-  Accept: 'application/vnd.github.v3+json',
-};
 
 export async function submitMemeToGitHub({
   sourceFile, // напр. memdata_nastia.js
@@ -67,17 +61,26 @@ function decodeBase64Unicode(str) {
     '%' + c.charCodeAt(0).toString(16).padStart(2, '0')).join(''));
 }
 
+// ✅ Token getter
+function getGitHubToken() {
+  const token = localStorage.getItem('github_token') || '';
+  if (!token.startsWith('ghp_')) {
+    throw new Error('❌ GitHub token is missing or invalid');
+  }
+  return token;
+}
+
+// ✅ API wrappers
 async function getBranch() {
   return await fetchJSON(
     `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/git/refs/heads/${MAIN_BRANCH}`,
-    {},
     undefined,
     'GET'
   ).then(r => r.object);
 }
 
 async function createBranch(branchName, baseSha) {
-  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/git/refs`, headers, {
+  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/git/refs`, {
     ref: `refs/heads/${branchName}`,
     sha: baseSha,
   });
@@ -86,14 +89,13 @@ async function createBranch(branchName, baseSha) {
 async function getFile(dataPath) {
   return await fetchJSON(
     `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${dataPath}?ref=${MAIN_BRANCH}`,
-    {},
     undefined,
     'GET'
   );
 }
 
 async function updateFile(dataPath, fileName, updatedContentBase64, sha, branchName) {
-  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${dataPath}`, headers, {
+  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${dataPath}`, {
     message: `додано новий мем: ${fileName}`,
     content: updatedContentBase64,
     branch: branchName,
@@ -104,7 +106,7 @@ async function updateFile(dataPath, fileName, updatedContentBase64, sha, branchN
 async function uploadAudio(audioFile, audioFileName, memeName, branchName) {
   const audioContent = await fileToBase64(audioFile);
   const audioPath = `audio/${audioFileName}`;
-  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${audioPath}`, headers, {
+  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${audioPath}`, {
     message: `додано аудіо до мема: ${memeName}`,
     content: audioContent,
     branch: branchName,
@@ -112,7 +114,7 @@ async function uploadAudio(audioFile, audioFileName, memeName, branchName) {
 }
 
 async function createPullRequest(branchName, memeName) {
-  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/pulls`, headers, {
+  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/pulls`, {
     title: `🆕 Мем: ${memeName}`,
     head: branchName,
     base: MAIN_BRANCH,
@@ -120,17 +122,26 @@ async function createPullRequest(branchName, memeName) {
   });
 }
 
-async function fetchJSON(url, headers, body, method = 'POST') {
+// ✅ Dynamic token + method-aware fetch
+async function fetchJSON(url, body = undefined, method = 'POST') {
+  const headers = {
+    Authorization: `token ${getGitHubToken()}`,
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+  };
+
   const res = await fetch(url, {
     method,
-    headers: { ...headers, 'Content-Type': 'application/json' },
+    headers,
     body: body ? JSON.stringify(body) : undefined
   });
+
   if (!res.ok) {
-    const err = await res.json();
+    const err = await res.json().catch(() => ({}));
     console.error('GitHub API error:', err);
-    throw new Error(err.message || 'GitHub request failed');
+    throw new Error(err.message || `GitHub request failed with ${res.status}`);
   }
+
   return res.json();
 }
 

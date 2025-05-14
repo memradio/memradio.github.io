@@ -1,0 +1,189 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.success {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+  color: #4caf50;
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin: 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.login-status {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #555;
+}
+.login-status.logged-in {
+  color: green;
+}
+.login-status.logged-out {
+  color: #f44336;
+}
+
+.form-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+.submit-form {
+  font-family: 'Roboto', sans-serif;
+  max-width: 540px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group select {
+  padding: 18px 16px 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #fafafa;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3f51b5;
+  background-color: #fff;
+}
+
+.form-group label {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  font-size: 14px;
+  color: #888;
+  background: white;
+  padding: 0 4px;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+/* Плаваючий лейбл */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:valid + label {
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: #3f51b5;
+}
+
+/* Іконки */
+.icon-input {
+  position: relative;
+}
+
+.icon-input .icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+/* Кнопка */
+.submit-form button {
+  background-color: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-form button:hover {
+  background-color: #303f9f;
+}
+
+/* Стан кнопки */
+.submit-form button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.submit-form button.success {
+  background-color: #4caf50;
+}
+.submit-form button.error {
+  background-color: #f44336;
+}
+
+/* Повідомлення про успіх */
+.success {
+  text-align: center;
+  font-size: 16px;
+  color: #4caf50;
+  margin-top: 20px;
+}
+
+/* Disabled форма */
+.form-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

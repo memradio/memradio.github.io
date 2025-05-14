@@ -6,25 +6,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Надішли свій мем</title>
   <link rel="stylesheet" href="/index.css" />
-  <link rel="stylesheet" href="./SubmitForm.css" />
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="/components/Header.css">
+  <link rel="stylesheet" href="/components/scrollToTopBtn.css">
 </head>
 
 <body>
+  <div id="app"></div>
   <div class="container">
     <h1>📤 Надішли свій мем</h1>
+    <p id="loginStatus" class="login-status">🔐 Неавторизовано</p>
     <button id="loginBtn" class="btn">🔐 Увійти з GitHub токеном</button>
+    <button id="logoutBtn" class="btn">🚪 Вийти</button>
     <p class="sub">Ми додамо найкращі пропозиції до бібліотеки рації</p>
 
     <form id="submitForm" class="submit-form">
-      <input type="text" name="name" placeholder="Цитата або назва мема *" required />
+      <!-- Вибір файлу -->
+      <div class="form-group">
+        <select id="sourceFile" name="sourceFile" required></select>
+        <label for="sourceFile">Файл для збереження</label>
+      </div>
 
-      <input type="url" name="youtube" placeholder="Посилання на YouTube (необов’язково)" />
-      <input type="url" name="tiktok" placeholder="Посилання на TikTok (необов’язково)" />
-      <input type="url" name="instagram" placeholder="Посилання на Instagram (необов’язково)" />
+      <!-- Назва мема -->
+      <div class="form-group">
+        <input type="text" name="name" id="memeName" required />
+        <label for="memeName">Цитата або назва мема *</label>
+      </div>
 
-      <input type="file" name="audio" accept="audio/*" />
+      <!-- YouTube -->
+      <div class="form-group icon-input">
+        <input type="url" name="youtube" id="youtubeInput" />
+        <label for="youtubeInput">YouTube (необов’язково)</label>
+        <span class="icon">▶️</span>
+      </div>
 
+      <!-- TikTok -->
+      <div class="form-group icon-input">
+        <input type="url" name="tiktok" id="tiktokInput" />
+        <label for="tiktokInput">TikTok (необов’язково)</label>
+        <span class="icon">🎵</span>
+      </div>
+
+      <!-- Instagram -->
+      <div class="form-group icon-input">
+        <input type="url" name="instagram" id="instagramInput" />
+        <label for="instagramInput">Instagram (необов’язково)</label>
+        <span class="icon">📸</span>
+      </div>
+
+      <!-- Аудіо -->
+      <div class="form-group icon-input">
+        <input type="file" name="audio" id="audioInput" accept="audio/*" />
+        <label for="audioInput">Аудіофайл</label>
+        <span class="icon">🎧</span>
+      </div>
+
+      <!-- Кнопка -->
       <button type="submit" class="btn btn-yellow">НАДІСЛАТИ</button>
+
     </form>
 
     <div id="successMessage" class="success" style="display: none;">
@@ -50,7 +89,7 @@
   </div>
 
 
-  <script type="module" src="./submit.js"></script>
+  <script type="module" src="./index.js"></script>
 </body>
 
 </html>
