@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Надішли свій мем</title>
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="./SubmitForm.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>📤 Надішли свій мем</h1>
+    <p class="sub">Ми додамо найкращі пропозиції до бібліотеки рації</p>
+
+    <form id="submitForm" class="submit-form">
+      <input type="text" name="name" placeholder="Цитата або назва мема *" required />
+
+      <input type="url" name="youtube" placeholder="Посилання на YouTube (необов’язково)" />
+      <input type="url" name="tiktok" placeholder="Посилання на TikTok (необов’язково)" />
+      <input type="url" name="instagram" placeholder="Посилання на Instagram (необов’язково)" />
+
+      <input type="file" name="audio" accept="audio/*" />
+
+      <button type="submit" class="btn btn-yellow">НАДІСЛАТИ</button>
+    </form>
+
+    <div id="successMessage" class="success" style="display: none;">
+      ✅ Дякуємо! Ми розглянемо твій мем і, можливо, додамо його до рації!
+    </div>
+
+
+    <div id="successMessage" class="success" style="display: none;">
+      ✅ Дякуємо! Ми розглянемо твій мем і, можливо, додамо його до рації!
+    </div>
+  </div>
+
+  <script type="module" src="./submit.js"></script>
+</body>
+
+</html>
