@@ -9,4 +9,13 @@ window.memeData = [
     "name": "Алег ти шо це плачеш",
     "audio": "61 Алег ти шо це плачеш.mp3"
   },
-];
+{
+  "name": "test",
+  "links": {
+    "youtube": "https://youtube.com/fdsfdsfsd",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": "tdddd.mp4"
+}
+]
