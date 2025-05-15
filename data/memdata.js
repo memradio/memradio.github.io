@@ -858,7 +858,7 @@ let memeData = [
   {
     "number": "205",
     "name": "Текноложія",
-    "audio": "205 Текноложія.mp4",
+    "audio": "205 Текноложія.mp3",
     "links": {"tiktok": "https://www.tiktok.com/@carpro_detailing_/video/7500265754516819206"}
   },
   {
