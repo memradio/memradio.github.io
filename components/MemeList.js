@@ -11,8 +11,13 @@ export function renderMemeList(container, memes) {
     item.className = 'meme-item';
     item.setAttribute("data-number", meme.number);
     const pathParts = window.location.pathname.split('/');
-    const fileName = pathParts[pathParts.length - 1];
-    const source = fileName.replace('.html', '') || null;
+    let source = null;
+    if (pathParts.includes('pages')) {
+      const afterPages = pathParts[pathParts.indexOf('pages') + 1];
+      if (afterPages) {
+        source = afterPages.replace('.html', '').replace('index', '') || null;
+      }
+    }
     const sourceParam = source && source != 'index' ? `&source=${source}` : '';
     const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}${sourceParam}`;
     const shareText = `\`\`\`\n${meme.name}\n\`\`\``;
