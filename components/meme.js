@@ -1,5 +1,6 @@
 import { renderMemeList } from './MemeList.js';
 import { renderHeader } from './Header.js';
+import { renderFooter } from './Footer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const meme = memeData.find(m => m.number === memeId);
     renderMeme(meme);
   }
+
+  renderFooter(app);
 
   const backButton = document.getElementById('backButton');
   backButton.addEventListener('click', () => {
