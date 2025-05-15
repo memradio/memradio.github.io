@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const backButton = document.getElementById('backButton');
   backButton.addEventListener('click', () => {
     const scrollUrl = source
-      ? `/pages/${source}.html#scrollto-${memeId}`
-      : `/index.html#scrollto-${memeId}`;
+      ? `/pages/${source}#scrollto-${memeId}`
+      : `/#scrollto-${memeId}`;
     window.location.href = scrollUrl;
   });
 
