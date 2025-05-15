@@ -852,14 +852,14 @@ let memeData = [
   {
     "number": "204",
     "name": "17 раз на день",
-    "audio": "204 17 раз на день.mp4",
+    "audio": "001КA 17 раз на день.mp3",
     "links": {}
   },
   {
     "number": "205",
     "name": "Текноложія",
     "audio": "205 Текноложія.mp4",
-    "links": {}
+    "links": {"tiktok": "https://www.tiktok.com/@carpro_detailing_/video/7500265754516819206"}
   },
   {
     "number": "206",
