@@ -32,7 +32,7 @@ export async function submitMemeToGitHub({
   await updateFile(dataPath, newMemeObject.name, updatedContentBase64, dataFile.sha, branchName)
 
   if (audioFile && audioFile.size > 0) {
-  // 6. Завантажуємо аудіофайл
+    // 6. Завантажуємо аудіофайл
     await uploadAudio(audioFile, newMemeObject.audio, newMemeObject.name, branchName);
   }
 
@@ -71,7 +71,7 @@ function getGitHubToken() {
 }
 
 // ✅ API wrappers
-async function getBranch() {
+export async function getBranch() {
   return await fetchJSON(
     `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/git/refs/heads/${MAIN_BRANCH}`,
     undefined,
@@ -79,14 +79,14 @@ async function getBranch() {
   ).then(r => r.object);
 }
 
-async function createBranch(branchName, baseSha) {
+export async function createBranch(branchName, baseSha) {
   return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/git/refs`, {
     ref: `refs/heads/${branchName}`,
     sha: baseSha,
   });
 }
 
-async function getFile(dataPath) {
+export async function getFile(dataPath) {
   return await fetchJSON(
     `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${dataPath}?ref=${MAIN_BRANCH}`,
     undefined,
@@ -122,6 +122,15 @@ async function createPullRequest(branchName, memeName) {
   });
 }
 
+export async function createNewUserPullRequest(branchName, userName) {
+  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/pulls`, {
+    title: `🆕 Корисутвач: ${userName}`,
+    head: branchName,
+    base: MAIN_BRANCH,
+    body: `Автоматично згенерований PR для нового користувача.`,
+  });
+}
+
 // ✅ Dynamic token + method-aware fetch
 async function fetchJSON(url, body = undefined, method = 'POST') {
   const headers = {
@@ -143,6 +152,37 @@ async function fetchJSON(url, body = undefined, method = 'POST') {
   }
 
   return res.json();
+}
+
+export async function FileExists(filePath) {
+  return await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}?ref=${MAIN_BRANCH}`, {
+    headers: {
+      Authorization: `token ${getGitHubToken()}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    }
+  });
+}
+
+export async function addNewDataFile(filename, filePath, branch) {
+  return await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${getGitHubToken()}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github.v3+json'
+    },
+    body: JSON.stringify({
+      message: `Створено нову сторінку мемів: ${filename}`,
+      content: encodeContent('[]'),
+      branch: branch
+    })
+  });
+
+
+  function encodeContent(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+  }
 }
 
 function fileToBase64(file) {

@@ -1,6 +1,7 @@
 import { submitMemeToGitHub } from '/api/githubapi.js';
 import { renderHeader } from '/components/Header.js';
 import { renderFooter } from '/components/Footer.js';
+import { saveToken, isLoggedIn  } from '/components/auth.js';
 
 // --- DOM Elements ---
 const form = document.getElementById('submitForm');
@@ -24,14 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFooter(app);
 });
 
-// --- Token Helpers ---
-export function getGitHubToken() {
-  return localStorage.getItem('github_token') || '';
-}
 
-function isLoggedIn() {
-  return getGitHubToken().startsWith('ghp_');
-}
 
 // --- UI Updates ---
 function updateLoginStatus() {
@@ -65,7 +59,7 @@ cancelLoginBtn.addEventListener('click', () => {
 confirmLoginBtn.addEventListener('click', () => {
   const token = tokenInput.value.trim();
   if (token.startsWith('ghp_')) {
-    localStorage.setItem('github_token', token);
+    saveToken(token);
     loginModal.style.display = 'none';
     updateLoginStatus();
     alert('✅ Токен збережено!');
