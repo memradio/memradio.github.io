@@ -1,4 +1,5 @@
 import { renderHeader } from './components/Header.js';
+import { renderFooter } from './components/Footer.js';
 import { renderPlayer, initPlayer } from './components/Player.js';
 import { renderTabs } from './components/Tabs.js';
 import { renderSearch } from './components/Search.js';
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mainContent.id = 'mainContent';
   mainContent.classList.toggle('text-mode', localStorage.getItem('textModeToggle') === 'true');
   app.appendChild(mainContent);
+  renderFooter(app);
 
   renderTabs(mainContent, (tab) => {
     currentTab = tab;

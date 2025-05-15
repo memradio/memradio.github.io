@@ -15,7 +15,7 @@ export function renderHeader(container, options = {}) {
       
         <img src="${logoSrc}" alt="Logo" class="${options.smallLogo ? 'small-logo' : 'full-logo'}">
       </a>
-      <h1 class="title">Мєм Рація</h1>
+      <h1 class="title">${options.title ? options.title: 'Мєм Рація'}</h1>
     `;
 
   container.appendChild(header);

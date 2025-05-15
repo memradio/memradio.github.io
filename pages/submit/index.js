@@ -1,5 +1,6 @@
 import { submitMemeToGitHub } from '/api/githubapi.js';
 import { renderHeader } from '/components/Header.js';
+import { renderFooter } from '/components/Footer.js';
 
 // --- DOM Elements ---
 const form = document.getElementById('submitForm');
@@ -19,7 +20,8 @@ const cancelLoginBtn = document.getElementById('cancelLogin');
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
 
-  renderHeader(app, { smallLogo: false, displayToggle: false });
+  renderHeader(app, { smallLogo: false, displayToggle: false, title: '📤 Надішли свій мем' });
+  renderFooter(app);
 });
 
 // --- Token Helpers ---
