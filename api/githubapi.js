@@ -185,6 +185,14 @@ export async function addNewDataFile(filename, filePath, branch) {
   }
 }
 
+export async function getDataFilesList() {
+  const res = await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/data`, {});
+
+    if (!res.ok) throw new Error('Не вдалося завантажити список файлів');
+
+    return await res.json();
+}
+
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

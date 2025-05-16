@@ -1,10 +1,10 @@
 export function renderFriendsTab(container) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'user-tab';
-    wrapper.id = 'friendsTab';
-    wrapper.style.display = 'none';
-  
-    wrapper.innerHTML = `
+  const wrapper = document.createElement('div');
+  wrapper.className = 'user-tab';
+  wrapper.id = 'friendsTab';
+  wrapper.style.display = 'none';
+
+  wrapper.innerHTML = `
       <h3>🔸 Мем-хвилі друзів:</h3>
       <div class="user-grid">
         <a href="/pages/kraveculya" class="user-tile">
@@ -27,9 +27,12 @@ export function renderFriendsTab(container) {
             <img src="/image/logo-full.png" alt="Мєм Рація" class="tile-logo">
             <span class="name">Мєм Рація</span>
         </a>
+          <a href="/pages/newpage" class="user-tile">
+          <span class="emoji">➕</span>
+          <span class="name">Додати</span>
+        </a>
       </div>
     `;
-  
-    container.appendChild(wrapper);
-  }
-  
+
+  container.appendChild(wrapper);
+}

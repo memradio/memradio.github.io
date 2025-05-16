@@ -16,9 +16,6 @@
   <div id="app">
 
     <div id="mainContent" class="container">
-      <p id="loginStatus" class="login-status">🔐 Неавторизовано</p>
-      <button id="loginBtn" class="material-btn">🔐 Увійти з GitHub токеном</button>
-      <button id="logoutBtn" class="material-btn" style="display: none;">🚪 Вийти</button>
 
       <p class="sub">Ми додамо найкращі пропозиції до бібліотеки рації</p>
 
@@ -78,23 +75,7 @@
       </div>
     </div>
 
-    <div id="loginModal" class="material-modal" style="display: none;">
-      <div class="modal-content">
-        <h2>🔐 Авторизація GitHub</h2>
-        <p>Встав свій <code>GitHub Token</code>:</p>
-        <input type="password" id="tokenInput" placeholder="ghp_..." />
-
-        <div class="modal-actions">
-          <button id="confirmLogin" class="material-btn">Зберегти</button>
-          <button id="cancelLogin" class="material-btn"
-            style="background-color: #e0e0e0; color: #000;">Скасувати</button>
-        </div>
-      </div>
-    </div>
   </div>
-
-
-
   <script type="module" src="./index.js"></script>
 </body>
 
