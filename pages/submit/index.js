@@ -96,7 +96,7 @@ async function fetchDataFileList() {
   select.innerHTML = '<option value="">Завантаження...</option>';
 
   try {
-    const files = getDataFilesList();
+    const files = await getDataFilesList();
 
     // Фільтруємо memdata_*.js
     const memdataFiles = files.filter(f =>
