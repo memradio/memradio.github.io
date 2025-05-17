@@ -1,3 +1,5 @@
+import { FRIEND_PAGES } from "/data/friendPages.js";
+
 export async function renderFriendsTab(container) {
   const wrapper = document.createElement('div');
   wrapper.className = 'user-tab';
@@ -9,9 +11,9 @@ export async function renderFriendsTab(container) {
 
   const grid = wrapper.querySelector('.user-grid');
 
-  const FRIEND_PAGES = ['kraveculya', 'oleg', 'emillia', 'kateryn'];
-
-  for (const username of FRIEND_PAGES) {
+  debugger;
+  for (const user of FRIEND_PAGES) {
+    const username = user.name;
     try {
       await import(`../data/memdata_${username}.js`);
 

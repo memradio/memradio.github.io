@@ -154,24 +154,32 @@ async function fetchJSON(url, body = undefined, method = 'POST') {
   return res.json();
 }
 
+async function fetchJSONAnauth(url, body = undefined, method = 'POST') {
+  const res = await fetch(url, {
+    method,
+    body: body ? JSON.stringify(body) : undefined
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    console.error('GitHub API error:', err);
+    throw new Error(err.message || `GitHub request failed with ${res.status}`);
+  }
+
+  return res.json();
+}
+
 export async function FileExists(filePath) {
   return await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}?ref=${MAIN_BRANCH}`);
 }
 
 export async function addNewDataFile(filename, filePath, branch) {
-  return await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}`, {
-    method: 'PUT',
-    headers: {
-      Authorization: `token ${getGitHubToken()}`,
-      'Content-Type': 'application/json',
-      Accept: 'application/vnd.github.v3+json'
-    },
-    body: JSON.stringify({
+  return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}`,
+    JSON.stringify({
       message: `Створено нову сторінку мемів: ${filename}`,
       content: encodeContent('[]'),
       branch: branch
-    })
-  });
+    }), 'PUT');
 
 
   function encodeContent(str) {
@@ -180,19 +188,17 @@ export async function addNewDataFile(filename, filePath, branch) {
 }
 
 export async function getDataFilesList() {
-  const res = await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/data`, {});
-
-  if (!res.ok) throw new Error('Не вдалося завантажити список файлів');
-
-  return await res.json();
+  return await fetchJSONAnauth(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/data`, undefined, 'GET');
 }
 
 export async function copyIndexPage(folderName, branchName) {
   const indexPath = 'index.html';
   const targetPath = `pages/${folderName}/index.html`;
 
-  const res = await fetch(
-    `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${indexPath}?ref=${MAIN_BRANCH}`
+  const res = await fetchJSONAnauth(
+    `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${indexPath}?ref=${MAIN_BRANCH}`,
+    undefined,
+    'GET'
   );
 
   if (!res.ok) {
@@ -219,6 +225,36 @@ export async function copyIndexPage(folderName, branchName) {
     branch: branchName
   }, 'PUT');
 }
+
+export async function addToFriendPages(name, emoji, branchName) {
+  const filePath = 'data/friendPages.js';
+
+  // Step 1: Fetch current file
+  const friendFile = await fetchJSONAnauth(
+    `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}?ref=${MAIN_BRANCH}`,
+    undefined,
+    'GET'
+  );
+
+  const decoded = decodeBase64Unicode(friendFile.content.replace(/\n/g, ''));
+
+  // Step 2: Inject new user entry
+  const newEntry = { name, emoji };
+  const insertAt = decoded.lastIndexOf(']');
+  const prefix = decoded.slice(0, insertAt).trim().replace(/,?$/, ',\n');
+  const updated = `${prefix}  ${JSON.stringify(newEntry)}\n];`;
+
+  const updatedBase64 = encodeBase64Unicode(updated);
+
+  // Step 3: Upload updated file to the same branch
+  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}`,{
+    message: `👥 Додано нового юзера ${name} до friendPages`,
+    content: updatedBase64,
+    branch: branchName,
+    sha: friendFile.sha
+  }, 'PUT');
+}
+
 
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
