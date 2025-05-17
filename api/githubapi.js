@@ -161,7 +161,7 @@ export async function FileExists(filePath) {
       Accept: 'application/vnd.github.v3+json',
       'Content-Type': 'application/json',
     }
-  });
+  }).catch(err => {status: 404});
 }
 
 export async function addNewDataFile(filename, filePath, branch) {
