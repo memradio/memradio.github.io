@@ -188,9 +188,38 @@ export async function addNewDataFile(filename, filePath, branch) {
 export async function getDataFilesList() {
   const res = await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/data`, {});
 
-    if (!res.ok) throw new Error('Не вдалося завантажити список файлів');
+  if (!res.ok) throw new Error('Не вдалося завантажити список файлів');
 
-    return await res.json();
+  return await res.json();
+}
+
+export async function copyIndexPage(folderName, branchName) {
+  const indexPath = 'index.html';
+  const targetPath = `pages/${folderName}/index.html`;
+
+  const original = await fetchJSON(
+    `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${indexPath}?ref=${MAIN_BRANCH}`,
+    {},
+    undefined,
+    'GET'
+  );
+
+  const decoded = decodeBase64Unicode(original.content.replace(/\n/g, ''));
+
+  // 🧠 Заміна /data/memdata.js → /data/memdata_{folderName}.js
+  const updatedHtml = decoded.replace(
+    /<script\s+src=["']\/data\/memdata\.js["']><\/script>/,
+    `<script src="/data/memdata_${folderName}.js"></script>`
+  );
+
+
+  const updatedContentBase64 = encodeBase64Unicode(updatedHtml);
+
+  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${targetPath}`, getHeaders(), {
+    message: `копія index.html для нової сторінки ${folderName}`,
+    content: updatedContentBase64,
+    branch: branchName
+  }, 'PUT');
 }
 
 function fileToBase64(file) {

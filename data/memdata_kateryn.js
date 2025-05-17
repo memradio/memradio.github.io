@@ -1,3 +1,6 @@
+window.meta = {
+  emoji: "👩",
+};
 window.memeData = [
     {
       number: "001КA",

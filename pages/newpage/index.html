@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🆕 Створити свою мем-сторінку</title>
     <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="/components/Footer.css" />
     <link rel="stylesheet" href="/components/Header.css" />
     <link rel="stylesheet" href="/components/scrollToTopBtn.css" />
@@ -21,6 +22,13 @@
                     <input type="text" id="newPageName" placeholder="Ваш нікнейм або назва *" required />
                     <label for="newPageName">Назва сторінки (латиницею, без пробілів)</label>
                 </div>
+                <label for="emoji">Іконка сторінки (емодзі):</label>
+                <div class="emoji-picker-wrapper">
+                    <button type="button" id="emojiBtn" class="emoji-picker-btn">📦 Вибери емодзі</button>
+                    <emoji-picker id="emojiPicker" style="display: none;"></emoji-picker>
+                    <input type="text" id="emoji" name="emoji" value="📦" style="display: none;" />
+                </div>
+
                 <button type="submit">Створити</button>
             </form>
             <div id="status" class="success" style="display: none;"></div>
@@ -28,6 +36,7 @@
     </div>
 
     <script type="module" src="./newpage.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 </body>
 
 </html>

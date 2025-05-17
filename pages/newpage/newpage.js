@@ -1,6 +1,7 @@
 import { renderHeader } from '/components/Header.js';
 import { renderFooter } from '/components/Footer.js';
-import { FileExists, addNewDataFile, getBranch, createBranch, createNewUserPullRequest } from '/api/githubapi.js';
+import { renderAuthBefore } from '/components/auth.js';
+import { FileExists, addNewDataFile, getBranch, createBranch, createNewUserPullRequest, copyIndexPage } from '/api/githubapi.js';
 
 
 function renderNewPage() {
@@ -8,8 +9,11 @@ function renderNewPage() {
   document.addEventListener('DOMContentLoaded', () => {
 
     const app = document.getElementById('app');
+    const mainContent = document.getElementById('mainContent');
+    const submitForm = document.getElementById('newPageForm');
 
     renderHeader(app, { smallLogo: false, displayToggle: false, tile: '🆕 Створити нову сторінку мемів' });
+    renderAuthBefore(mainContent, submitForm);
     renderFooter(app);
   });
 
@@ -51,6 +55,8 @@ function renderNewPage() {
 
       if (!createRes.ok) throw new Error('Помилка створення');
 
+      await copyIndexPage(filename, branchName);
+
 
       await createNewUserPullRequest(branchName, filename);
 
@@ -64,6 +70,30 @@ function renderNewPage() {
       alert('❌ Помилка. Спробуйте ще раз або перевірте зʼєднання.');
     }
   });
+
+
+  const emojiBtn = document.getElementById('emojiBtn');
+  const emojiInput = document.getElementById('emoji');
+  const emojiPicker = document.getElementById('emojiPicker');
+
+  emojiBtn.addEventListener('click', () => {
+    const isVisible = emojiPicker.style.display === 'block';
+    emojiPicker.style.display = isVisible ? 'none' : 'block';
+  });
+
+  emojiPicker.addEventListener('emoji-click', event => {
+    const emoji = event.detail.unicode;
+    emojiInput.value = emoji;
+    emojiBtn.textContent = emoji;
+    emojiPicker.style.display = 'none';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!document.querySelector('.emoji-picker-wrapper').contains(e.target)) {
+      emojiPicker.style.display = 'none';
+    }
+  });
+
 }
 
 
