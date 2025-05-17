@@ -155,13 +155,7 @@ async function fetchJSON(url, body = undefined, method = 'POST') {
 }
 
 export async function FileExists(filePath) {
-  return await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}?ref=${MAIN_BRANCH}`, {
-    headers: {
-      Authorization: `token ${getGitHubToken()}`,
-      Accept: 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json',
-    }
-  }).catch(err => {status: 404});
+  return await fetch(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}?ref=${MAIN_BRANCH}`);
 }
 
 export async function addNewDataFile(filename, filePath, branch) {
@@ -197,14 +191,18 @@ export async function copyIndexPage(folderName, branchName) {
   const indexPath = 'index.html';
   const targetPath = `pages/${folderName}/index.html`;
 
-  const original = await fetchJSON(
-    `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${indexPath}?ref=${MAIN_BRANCH}`,
-    {},
-    undefined,
-    'GET'
+  const res = await fetch(
+    `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${indexPath}?ref=${MAIN_BRANCH}`
   );
 
-  const decoded = decodeBase64Unicode(original.content.replace(/\n/g, ''));
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    console.error('GitHub API error:', err);
+    throw new Error(err.message || `GitHub request failed with ${res.status}`);
+  }
+  const json = await res.json();
+
+  const decoded = decodeBase64Unicode(json.content.replace(/\n/g, ''));
 
   // 🧠 Заміна /data/memdata.js → /data/memdata_{folderName}.js
   const updatedHtml = decoded.replace(
@@ -215,7 +213,7 @@ export async function copyIndexPage(folderName, branchName) {
 
   const updatedContentBase64 = encodeBase64Unicode(updatedHtml);
 
-  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${targetPath}`, getHeaders(), {
+  await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${targetPath}`, {
     message: `копія index.html для нової сторінки ${folderName}`,
     content: updatedContentBase64,
     branch: branchName
