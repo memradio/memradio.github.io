@@ -9,7 +9,7 @@ export async function renderFriendsTab(container) {
 
   const grid = wrapper.querySelector('.user-grid');
 
-  const FRIEND_PAGES = ['kraveculya', 'oleg', 'viktor', 'kateryn'];
+  const FRIEND_PAGES = ['kraveculya', 'oleg', 'emillia', 'kateryn'];
 
   for (const username of FRIEND_PAGES) {
     try {
