@@ -1,7 +1,7 @@
 import { renderHeader } from '/components/Header.js';
 import { renderFooter } from '/components/Footer.js';
 import { renderAuthBefore } from '/components/auth.js';
-import { FileExists, addNewDataFile, getBranch, createBranch, createNewUserPullRequest, copyIndexPage } from '/api/githubapi.js';
+import { FileExists, addNewDataFile, getBranch, createBranch, createNewUserPullRequest, copyIndexPage, addToFriendPages } from '/api/githubapi.js';
 
 
 function renderNewPage() {
@@ -21,6 +21,7 @@ function renderNewPage() {
   const form = document.getElementById('newPageForm');
   const input = document.getElementById('newPageName');
   const status = document.getElementById('status');
+  const emoji = document.getElementById('emoji');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -55,9 +56,8 @@ function renderNewPage() {
 
       if (!createRes.ok) throw new Error('Помилка створення');
 
-      await copyIndexPage(filename, branchName);
-
-
+      await copyIndexPage(rawName, branchName);
+      await addToFriendPages(rawName, emoji.value, branchName);
       await createNewUserPullRequest(branchName, filename);
 
       status.style.display = 'block';
