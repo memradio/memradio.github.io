@@ -1,1 +1,1 @@
-[]
+export const MEME_DATA = [];

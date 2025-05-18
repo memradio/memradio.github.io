@@ -2,31 +2,18 @@ import { renderMemeList } from './MemeList.js';
 import { renderHeader } from './Header.js';
 import { renderFooter } from './Footer.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 
   const app = document.getElementById('app');
   renderHeader(app, { smallLogo: true, displayToggle: false }); // маленька іконка
 
   const urlParams = new URLSearchParams(window.location.search);
   const memeId = urlParams.get('id');
-  const source = urlParams.get('source');
+  const source = urlParams.get('source') ?? 'default';
 
-
-  if (source && source != 'index') {
-
-    const dataScript = document.createElement("script");
-    dataScript.src = `data/memdata_${source}.js`;
-
-    dataScript.onload = () => {
-      const meme = window.memeData.find(m => m.number === memeId);
-      renderMeme(meme);
-    };
-
-    document.head.appendChild(dataScript);
-  } else {
-    const meme = memeData.find(m => m.number === memeId);
-    renderMeme(meme);
-  }
+  const { MEME_DATA } = await import(`/data/memdata_${source}.js`);
+  const meme = MEME_DATA.find(m => m.number === memeId);
+  renderMeme(meme);
 
   renderFooter(app);
 

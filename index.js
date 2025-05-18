@@ -9,7 +9,7 @@ import { renderFriendsTab } from './components/FriendsTab.js';
 let currentFilter = '';
 let currentTab = 'all';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const app = document.getElementById('app');
 
   renderHeader(app, { smallLogo: false, displayToggle: true });
@@ -35,6 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
   memeListContainer.id = 'memeListContainer';
   mainContent.appendChild(memeListContainer);
 
+  let source = 'default';
+  const pathParts = window.location.pathname.split('/');
+  if (pathParts.includes('pages')) {
+    const afterPages = pathParts[pathParts.indexOf('pages') + 1];
+    if (afterPages) {
+      source = afterPages.replace('.html', '').replace('index', '') || null;
+    }
+  }
+
+  debugger;
+  const { MEME_DATA } = await import(`/data/memdata_${source}.js`);
+  const memeData = MEME_DATA;
   initPlayer(memeData); // Ініціалізувати плеєр
 
   renderFilteredMemes();

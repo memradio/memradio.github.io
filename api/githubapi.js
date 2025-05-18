@@ -177,7 +177,7 @@ export async function addNewDataFile(filename, filePath, branch) {
   return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}`,
     {
       message: `Створено нову сторінку мемів: ${filename}`,
-      content: encodeContent('[]'),
+      content: encodeContent('export const MEME_DATA = []'),
       branch: branch
     }, 'PUT');
 

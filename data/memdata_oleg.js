@@ -1,8 +1,4 @@
-window.meta = {
-  emoji: "🧔"
-
-};
-window.memeData = [
+export const MEME_DATA = [
   {
     "number": "001O",
     "name": "Олег ти шо плачеш",
