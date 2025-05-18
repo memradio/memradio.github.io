@@ -76,6 +76,7 @@ window.addEventListener('updateLoginStatus', (e) => {
 
 fetchDataFileList();
 
+
 function disableForm(disabled) {
   if (disabled) {
     form.classList.add('form-disabled');
@@ -115,10 +116,39 @@ async function fetchDataFileList() {
       opt.value = file.name;
       opt.textContent = file.name;
       select.appendChild(opt);
+
+      select.addEventListener('change', () => {
+        const selectedFile = select.value;
+        if (selectedFile) {
+          suggestNextMemeNumber(selectedFile);
+        } else {
+          document.getElementById('numberInput').value = '';
+        }
+      });
     });
 
   } catch (err) {
     console.error('GitHub fetch error:', err);
     select.innerHTML = '<option value="">⚠️ Помилка завантаження</option>';
+  }
+}
+
+async function suggestNextMemeNumber(sourceFile) {
+  try {
+    const res = await fetch(`https://raw.githubusercontent.com/memradio/memradio.github.io/main/data/${sourceFile}`);
+    const text = await res.text();
+
+    // Find all numbers in JSON-style object entries
+    const matches = [...text.matchAll(/number:\s*["'](\d+)([A-ZА-Я]?)/gi)];
+    if (!matches.length) return;
+
+    const last = matches.map(m => ({ num: parseInt(m[1]), suffix: m[2] || '' }))
+      .sort((a, b) => b.num - a.num)[0];
+
+    const nextNumber = `${last.num + 1}${last.suffix}`;
+    document.getElementById('numberInput').value = nextNumber;
+
+  } catch (err) {
+    console.error('❌ Failed to load source file for number suggestion:', err);
   }
 }

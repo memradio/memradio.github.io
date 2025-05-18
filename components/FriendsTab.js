@@ -14,11 +14,9 @@ export async function renderFriendsTab(container) {
   for (const user of FRIEND_PAGES) {
     const username = user.name;
     try {
-      await import(`../data/memdata_${username}.js`);
 
-      const meta = window.meta || {};
-      const emoji = meta.emoji || '👤';
-      const name = meta.name || username;
+      const emoji = user.emoji;
+      const name = username;
 
       const tile = document.createElement('a');
       tile.href = `/pages/${username}`;
