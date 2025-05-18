@@ -140,11 +140,11 @@ async function suggestNextMemeNumber(sourceFile) {
     const text = await res.text();
 
     // Find all numbers in JSON-style object entries
-    const matches = [...text.matchAll(/number:\s*["'](\d+)([A-ZА-Я]?)/gi)];
+    const matches = [...text.matchAll(/number(["]?):\s*["'](\d+)([A-ZА-Я]?)/gi)];
     if (!matches.length) return;
 
     const last = matches
-      .map(m => ({ num: parseInt(m[1]), suffix: m[2] || '' }))
+      .map(m => ({ num: parseInt(m[2]), suffix: m[3] || '' }))
       .sort((a, b) => b.num - a.num)[0];
 
     // Format with leading zeros (min. 3 digits)
