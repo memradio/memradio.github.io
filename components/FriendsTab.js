@@ -11,7 +11,6 @@ export async function renderFriendsTab(container) {
 
   const grid = wrapper.querySelector('.user-grid');
 
-  debugger;
   for (const user of FRIEND_PAGES) {
     const username = user.name;
     try {

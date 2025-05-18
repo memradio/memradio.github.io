@@ -63,7 +63,6 @@ function renderNewPage() {
       form.reset();
 
     } catch (err) {
-      debugger
       console.error(err);
       alert('❌ Помилка. Спробуйте ще раз або перевірте зʼєднання.');
     }
