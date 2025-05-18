@@ -26,7 +26,7 @@ export function renderContactUs() {
             return;
         }
 
-        fetch('https://script.google.com/macros/s/AKfycbyTdVJO3qWPNmNmwSa2S0fDaBZDvs8C6vwjViHleCHxaEBpP7i_t5o1H3fAKDUf9UH_/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxKj4YJbTp4syvYB3mwJ88TMjbp_mbxsYvZCyTifQALCp0WVoba26xITLmRj2L425E/exec', {
             method: 'POST',
             body: formData
         })
