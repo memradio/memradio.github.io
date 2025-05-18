@@ -52,9 +52,7 @@ function renderNewPage() {
       await createBranch(branchName, baseSha);
 
       // ✅ Якщо не існує — створюємо
-      const createRes = await addNewDataFile(filename, filePath, branchName)
-
-      if (!createRes.ok) throw new Error('Помилка створення');
+      await addNewDataFile(filename, filePath, branchName)
 
       await copyIndexPage(rawName, branchName);
       await addToFriendPages(rawName, emoji.value, branchName);

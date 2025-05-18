@@ -175,11 +175,11 @@ export async function FileExists(filePath) {
 
 export async function addNewDataFile(filename, filePath, branch) {
   return await fetchJSON(`${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${filePath}`,
-    JSON.stringify({
+    {
       message: `Створено нову сторінку мемів: ${filename}`,
       content: encodeContent('[]'),
       branch: branch
-    }), 'PUT');
+    }, 'PUT');
 
 
   function encodeContent(str) {
@@ -195,18 +195,11 @@ export async function copyIndexPage(folderName, branchName) {
   const indexPath = 'index.html';
   const targetPath = `pages/${folderName}/index.html`;
 
-  const res = await fetchJSONAnauth(
+  const json = await fetchJSONAnauth(
     `${API_BASE}/repos/${GITHUB_USERNAME}/${REPO}/contents/${indexPath}?ref=${MAIN_BRANCH}`,
     undefined,
     'GET'
   );
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    console.error('GitHub API error:', err);
-    throw new Error(err.message || `GitHub request failed with ${res.status}`);
-  }
-  const json = await res.json();
 
   const decoded = decodeBase64Unicode(json.content.replace(/\n/g, ''));
 
