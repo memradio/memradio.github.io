@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const backButton = document.getElementById('backButton');
   backButton.addEventListener('click', () => {
-    const scrollUrl = source
+    const scrollUrl = source !== 'default'
       ? `/pages/${source}#scrollto-${memeId}`
       : `/#scrollto-${memeId}`;
     window.location.href = scrollUrl;

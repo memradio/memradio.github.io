@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  debugger;
   const { MEME_DATA } = await import(`/data/memdata_${source}.js`);
   const memeData = MEME_DATA;
   initPlayer(memeData); // Ініціалізувати плеєр
