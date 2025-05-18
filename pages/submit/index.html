@@ -32,9 +32,10 @@
           <input type="text" name="name" id="memeName" required />
           <label for="memeName">Цитата або назва мема *</label>
         </div>
-
-        <input type="text" name="number" id="numberInput" required placeholder=" " />
-        <label for="numberInput">Номер мема (наприклад, 201K)</label>
+        <div class="form-group">
+          <input type="text" name="number" id="numberInput" required placeholder=" " pattern="^[0-9]{3,4}[A-ZА-Я]?$" />
+          <label for="numberInput">Номер мема (напр. 201K)</label>
+        </div>
 
         <!-- YouTube -->
         <div class="form-group icon-input">

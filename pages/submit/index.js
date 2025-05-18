@@ -34,6 +34,7 @@ form.addEventListener('submit', async (e) => {
     if (!sourceFile) throw new Error('Файл для збереження не вибрано');
 
     const newMemeObject = {
+      number: formData.get('number')?.trim(),
       name: formData.get('name')?.trim(),
       links: {
         youtube: formData.get('youtube')?.trim() || '',
@@ -142,10 +143,14 @@ async function suggestNextMemeNumber(sourceFile) {
     const matches = [...text.matchAll(/number:\s*["'](\d+)([A-ZА-Я]?)/gi)];
     if (!matches.length) return;
 
-    const last = matches.map(m => ({ num: parseInt(m[1]), suffix: m[2] || '' }))
+    const last = matches
+      .map(m => ({ num: parseInt(m[1]), suffix: m[2] || '' }))
       .sort((a, b) => b.num - a.num)[0];
 
-    const nextNumber = `${last.num + 1}${last.suffix}`;
+    // Format with leading zeros (min. 3 digits)
+    const formattedNumber = String(last.num + 1).padStart(3, '0');
+    const nextNumber = `${formattedNumber}${last.suffix}`;
+
     document.getElementById('numberInput').value = nextNumber;
 
   } catch (err) {
