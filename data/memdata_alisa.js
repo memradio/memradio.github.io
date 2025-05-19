@@ -18,5 +18,15 @@ export const MEME_DATA = [
     "instagram": ""
   },
   "audio": "0cf2c598-b134-4e6c-8e27-ca580913f527.m4a"
+},
+{
+  "number": "003А",
+  "name": "Aga",
+  "links": {
+    "youtube": "https://music.youtube.com/watch?v=D4adtkxf6V8",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": ""
 }
 ]
