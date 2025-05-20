@@ -33,7 +33,7 @@
           <label for="memeName">Цитата або назва мема *</label>
         </div>
         <div class="form-group">
-          <input type="text" name="number" id="numberInput" required placeholder=" " pattern="^[0-9]{3,4}[A-ZА-Я]?$" />
+          <input required type="text" name="number" id="numberInput" placeholder=" " pattern="^[0-9]{3,4}[A-ZА-Я]?$" />
           <label for="numberInput">Номер мема (напр. 201K)</label>
         </div>
 
@@ -78,8 +78,14 @@
       <div id="successMessage" class="success" style="display: none;">
         ✅ Дякуємо! Ми розглянемо твій мем і, можливо, додамо його до рації!
       </div>
-    </div>
 
+      <div class="pending-users-link" style="text-align: center; margin-top: 20px;">
+        <a href="https://github.com/memradio/memradio.github.io/pulls?q=is%3Apr+%D0%9C%D0%B5%D0%BC%3A+is%3Aopen"
+          target="_blank" style="font-size: 14px; text-decoration: underline; color: #3f51b5;">
+          🔍 Переглянути меми, які очікують підтвердження
+        </a>
+      </div>
+    </div>
   </div>
   <script type="module" src="./index.js"></script>
 </body>
