@@ -20,8 +20,8 @@ export function renderMemeList(container, memes) {
     }
     const sourceParam = source && source != 'index' ? `&source=${source}` : '';
     const shareLink = `${window.location.origin}/meme.html?id=${encodeURIComponent(meme.number)}${sourceParam}`;
-    const shareText = `\`\`\`\n${meme.name}\n\`\`\``;
-
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const shareText = isIOS ? `\n${meme.name}\n` : `\`\`\`\n${meme.name}\n\`\`\``;
 
     item.innerHTML = `
   <div class="meme-header">
