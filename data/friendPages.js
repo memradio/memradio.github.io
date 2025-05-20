@@ -3,5 +3,6 @@ export const FRIEND_PAGES = [
   { name: 'oleg', emoji: '🧔' },
   { name: 'kateryn', emoji: '👩' },
   {"name":"alisa","emoji":"💓"},
-  {"name":"dima","emoji":"🏌️"}
+  {"name":"dima","emoji":"🏌️"},
+  {"name":"tetanja","emoji":"👧"}
 ];
