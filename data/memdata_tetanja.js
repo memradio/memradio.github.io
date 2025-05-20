@@ -1,7 +1,7 @@
 export const MEME_DATA = [,
 {
   "number": "001T",
-  "name": "Нсіколи",
+  "name": "Ніколи",
   "links": {
     "youtube": "",
     "tiktok": "",
