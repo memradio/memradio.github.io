@@ -1,4 +1,4 @@
-export const MEME_DATA = [,
+export const MEME_DATA = [
 {
   "number": "001T",
   "name": "Ніколи",
@@ -9,4 +9,4 @@ export const MEME_DATA = [,
   },
   "audio": "001T Ніколи.MP4"
 }
-]
+];
