@@ -828,7 +828,7 @@ export const MEME_DATA = [
   {
     "number": "200",
     "name": "Міша всю хуйня",
-    "audio": "200 Міша всьо хуйня.mp3",
+    "audio": "200 Міша всьо хуйня.mp3",
     "links": {"youtube":"https://www.youtube.com/watch?v=0Uin1PWZIcw"}
   },
   {
