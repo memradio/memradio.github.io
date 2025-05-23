@@ -197,3 +197,7 @@
 .text-mode .meme-actions {
   display: none !important;
 }
+
+.meme-link.knowyourmeme {
+  background-color: #0047FF;
+}

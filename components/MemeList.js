@@ -34,6 +34,7 @@ export function renderMemeList(container, memes) {
     ${meme.youtubelink ? `<br><a class="meme-link youtube" href="${meme.youtubelink}" target="_blank">YouTube</a>` : ''}
     ${meme.links?.youtube ? `<br><a class="meme-link youtube" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
     ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
+    ${meme.links?.knowyourmeme ? `<br><a class="meme-link knowyourmeme" href="${meme.links?.knowyourmeme}" target="_blank"><i class="fas fa-info-circle"></i>KnowYourMeme</a>` : ''}
       ${meme.links?.instagram ? `
     <br>
     <a href="${meme.links.instagram}" target="_blank" class="instagram-button">
