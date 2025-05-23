@@ -199,5 +199,6 @@
 }
 
 .meme-link.knowyourmeme {
-  background-color: #0047FF;
+  background-color: #1c2d48; /* Dark navy */
+  color: #ffffff;
 }
