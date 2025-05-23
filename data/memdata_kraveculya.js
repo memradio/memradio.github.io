@@ -30,4 +30,14 @@ export const MEME_DATA = [
         audio: "005K То якого фіга ти мішаєш.mp4",
         links: {"instagram": "https://www.instagram.com/reel/DIzNOFhND4l"}
     },
-  ];
+{
+  "number": "006К",
+  "name": "test",
+  "links": {
+    "youtube": "",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": "IMG_1545.mp3"
+}
+]
