@@ -39,5 +39,15 @@ export const MEME_DATA = [
     "instagram": ""
   },
   "audio": "ea87fbea-30ad-41a8-93b5-3f90eef0859c.m4a"
+},
+{
+  "number": "007К",
+  "name": "Сельодочка",
+  "links": {
+    "youtube": "",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": "6f102361-7996-4cc2-876c-ecd4b9da6243.m4a"
 }
 ]
