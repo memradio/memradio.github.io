@@ -847,7 +847,7 @@ export const MEME_DATA = [
     "number": "203",
     "name": "Okay no problem",
     "audio": "203 Okay no problem.mp4",
-    "links": {}
+    "links": {"tiktok": "https://www.tiktok.com/@proluna/video/7456104491645963525"}
   },
   {
     "number": "204",
