@@ -1,5 +1,6 @@
 import { getBookmarks, isBookmarked, toggleBookmark } from './Bookmarks.js';
 import { playMemeByNumber } from './Player.js';
+import { getYoutubeEmbed } from '/utils/youtube.js';
 
 export function renderMemeList(container, memes) {
   const list = document.createElement('div');
@@ -35,7 +36,8 @@ export function renderMemeList(container, memes) {
     ${meme.links?.youtube ? `<br><a class="meme-link youtube" href="${meme.links?.youtube}" target="_blank">YouTube</a>` : ''}
     ${meme.links?.tiktok ? `<br><a class="meme-link tiktok" href="${meme.links?.tiktok}" target="_blank">TikTok</a>` : ''}
     ${meme.links?.knowyourmeme ? `<br><a class="meme-link knowyourmeme" href="${meme.links?.knowyourmeme}" target="_blank"><i class="fas fa-info-circle"></i>KnowYourMeme</a>` : ''}
-      ${meme.links?.instagram ? `
+    ${!meme.audio && meme.links?.youtube ? `<div class="meme-embed"><iframe src="${getYoutubeEmbed(meme.links.youtube)}" width="100%" height="80" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>` : ''}
+    ${meme.links?.instagram ? `
     <br>
     <a href="${meme.links.instagram}" target="_blank" class="instagram-button">
       <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">

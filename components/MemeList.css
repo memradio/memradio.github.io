@@ -202,3 +202,9 @@
   background-color: #1c2d48; /* Dark navy */
   color: #ffffff;
 }
+
+.meme-embed {
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
