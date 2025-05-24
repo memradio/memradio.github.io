@@ -28,5 +28,15 @@ export const MEME_DATA = [
     "instagram": ""
   },
   "audio": ""
+},
+{
+  "number": "004А",
+  "name": "Просто мем",
+  "links": {
+    "youtube": "",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": "download.mp4"
 }
 ]
