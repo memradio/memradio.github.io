@@ -24,3 +24,54 @@
       padding: 16px;
     }
   }
+
+  .buy-button,
+  .buy-button:visited,
+  .buy-button:focus,
+  .buy-button:hover,
+  .buy-button:active {
+    text-decoration: none;
+  }
+
+  .buy-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #4a6fa5;
+    /* спокійний синій */
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .buy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  footer .buy-button:hover {
+    text-decoration: none;
+  }
+
+  footer .buy-button {
+    color: white;
+  }
+
+
+
+  .buy-button:focus {
+    outline: none;
+  }
+
+  .cart-icon {
+    width: 20px;
+    height: 20px;
+    stroke: white;
+    pointer-events: none;
+  }
