@@ -930,5 +930,15 @@ export const MEME_DATA = [
     "instagram": ""
   },
   "audio": "Боже_да_блин.mp3"
+},
+{
+  "number": "217",
+  "name": "Треба було виходить заміж за депутата",
+  "links": {
+    "youtube": "https://www.youtube.com/shorts/wYzTnB84Y2M",
+    "tiktok": "https://www.tiktok.com/@tyhotova/video/7514973854133931270",
+    "instagram": ""
+  },
+  "audio": "Треба було виходить заміж за депутата.mp3"
 }
 ]
