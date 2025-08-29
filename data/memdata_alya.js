@@ -1,4 +1,4 @@
-export const MEME_DATA = [,
+export const MEME_DATA = [
 {
   "number": "001",
   "name": "Красівий красавчик мой любимий",
