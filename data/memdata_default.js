@@ -920,5 +920,15 @@ export const MEME_DATA = [
     "name": "Аштанга",
     "audio": "215 Аштанга.mp3",
     "links": {"tiktok": "https://www.tiktok.com/@tinakarol/video/7395854079890574597"}
-  }
+  },
+{
+  "number": "216",
+  "name": "Боже_да_блин",
+  "links": {
+    "youtube": "",
+    "tiktok": "",
+    "instagram": ""
+  },
+  "audio": "Боже_да_блин.mp3"
+}
 ]
